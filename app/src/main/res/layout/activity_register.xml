@@ -9,6 +9,9 @@
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/background" />
 
     <LinearLayout
@@ -25,12 +28,19 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
 
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:srcCompat="@tools:sample/avatars"
+            android:layout_marginBottom="32dp"/>
+
         <TextView
             android:id="@+id/textView_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Nombres(s)"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:textSize="16sp" />
 
         <EditText
@@ -50,9 +60,9 @@
             android:id="@+id/textView_surname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:text="Apellido(s)"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:textSize="16sp" />
 
         <EditText
@@ -74,7 +84,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:text="Correo Electrónico"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:textSize="16sp" />
 
         <EditText
@@ -94,9 +104,9 @@
             android:id="@+id/textView_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:text="Dirección"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:textSize="16sp" />
 
         <EditText
@@ -117,7 +127,7 @@
             android:id="@+id/textView_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:text="Contraseña"
             android:textColor="#000000"
             android:textSize="16sp" />
@@ -139,7 +149,7 @@
             android:id="@+id/textView_Repeatpassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:text="Confirmar contraseña"
             android:textColor="#000000"
             android:textSize="16sp" />
@@ -156,6 +166,19 @@
             android:padding="16dp"
             android:textColor="#5c5f72"
             android:textSize="16sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonRegister"
+            style="@android:style/Widget.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/login_btn_background"
+            android:padding="16dp"
+            android:text="Registrarse"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
