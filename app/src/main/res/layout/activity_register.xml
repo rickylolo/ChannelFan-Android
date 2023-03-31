@@ -5,182 +5,211 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/background" />
-
     <LinearLayout
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2">
-
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="match_parent"
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:srcCompat="@tools:sample/avatars"
-            android:layout_marginBottom="32dp"/>
-
-        <TextView
-            android:id="@+id/textView_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nombres(s)"
-            android:textColor="#000000"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/editText_name"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/edittext_background"
-            android:ems="10"
-            android:hint="Ingresa tu nombre"
-            android:inputType="textPersonName"
-            android:padding="16dp"
-            android:textColor="#5c5f72"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/textView_surname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Apellido(s)"
-            android:textColor="#000000"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/editText_surname"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/edittext_background"
-            android:ems="10"
-            android:hint="Ingresa tu apellido"
-            android:inputType="textPersonName"
-            android:padding="16dp"
-            android:textColor="#5c5f72"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/textView_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="Correo Electrónico"
-            android:textColor="#000000"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/editText_email"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/edittext_background"
-            android:ems="10"
-            android:hint="Ingresa tu correo electrónico"
-            android:inputType="textEmailAddress"
-            android:padding="16dp"
-            android:textColor="#5c5f72"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/textView_address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Dirección"
-            android:textColor="#000000"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/editText_address"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/edittext_background"
-            android:ems="10"
-            android:hint="Ingresa tu dirección"
-            android:inputType="textPostalAddress"
-            android:padding="16dp"
-            android:textColor="#5c5f72"
-            android:textSize="16sp" />
-
-
-        <TextView
-            android:id="@+id/textView_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Contraseña"
-            android:textColor="#000000"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/editText_password"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/edittext_background"
-            android:ems="10"
-            android:hint="Ingresa tu contraseña"
-            android:inputType="textPassword"
-            android:padding="16dp"
-            android:textColor="#5c5f72"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/textView_Repeatpassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Confirmar contraseña"
-            android:textColor="#000000"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/editText_Repeatpassword"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/edittext_background"
-            android:ems="10"
-            android:hint="Ingresa tu contraseña nuevamente"
-            android:inputType="textPassword"
-            android:padding="16dp"
-            android:textColor="#5c5f72"
-            android:textSize="16sp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/buttonRegister"
-            style="@android:style/Widget.Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/login_btn_background"
-            android:padding="16dp"
-            android:text="Registrarse"
-            android:textColor="#ffffff"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
+            app:srcCompat="@drawable/background" />
     </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2">
+
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/textView_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nombres(s)"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/editText_name"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edittext_background"
+                android:ems="10"
+                android:hint="Ingresa tu nombre"
+                android:inputType="textPersonName"
+                android:padding="16dp"
+                android:textColor="#5c5f72"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView_surname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Apellido(s)"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/editText_surname"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edittext_background"
+                android:ems="10"
+                android:hint="Ingresa tu apellido"
+                android:inputType="textPersonName"
+                android:padding="16dp"
+                android:textColor="#5c5f72"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Correo Electrónico"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/editText_email"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edittext_background"
+                android:ems="10"
+                android:hint="Ingresa tu correo electrónico"
+                android:inputType="textEmailAddress"
+                android:padding="16dp"
+                android:textColor="#5c5f72"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Dirección"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/editText_address"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edittext_background"
+                android:ems="10"
+                android:hint="Ingresa tu dirección"
+                android:inputType="textPostalAddress"
+                android:padding="16dp"
+                android:textColor="#5c5f72"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:id="@+id/textView_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Contraseña"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/editText_password"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edittext_background"
+                android:ems="10"
+                android:hint="Ingresa tu contraseña"
+                android:inputType="textPassword"
+                android:padding="16dp"
+                android:textColor="#5c5f72"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView_Repeatpassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Confirmar contraseña"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/editText_Repeatpassword"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edittext_background"
+                android:ems="10"
+                android:hint="Ingresa tu contraseña nuevamente"
+                android:inputType="textPassword"
+                android:padding="16dp"
+                android:textColor="#5c5f72"
+                android:textSize="16sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_Register"
+                style="@android:style/Widget.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/login_btn_background"
+                android:padding="16dp"
+                android:text="Registrarse"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_Cancel"
+                style="@android:style/Widget.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="64dp"
+                android:background="@drawable/login_btn_background"
+                android:padding="16dp"
+                android:text="Cancelar"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
