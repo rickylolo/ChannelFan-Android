@@ -22,8 +22,6 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         })
-
-        //Buttons to another activity
         val btn_Home = findViewById<Button>(R.id.btn_Home)
         btn_Home.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {

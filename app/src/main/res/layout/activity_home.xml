@@ -20,13 +20,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/channel" />
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="412dp"
-        android:layout_height="1dp"
-        android:background="#A191D9"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        tools:layout_editor_absoluteX="0dp" />
+
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -34,13 +28,14 @@
         android:layout_height="600dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/imageView7"
-        app:layout_constraintTop_toBottomOf="@+id/view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:layout_editor_absoluteX="-2dp">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerFilms"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/view_review" />
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
@@ -53,6 +48,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/rectangulo" />
 
+
     <ImageView
         android:id="@+id/btn_perfil"
         android:layout_width="44dp"
@@ -62,7 +58,7 @@
         app:layout_constraintHorizontal_bias="0.582"
         app:layout_constraintStart_toEndOf="@+id/btn_search"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.733"
+        app:layout_constraintVertical_bias="0.5"
         app:srcCompat="@drawable/usuario" />
 
     <ImageView
@@ -73,7 +69,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageView7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.733"
+        app:layout_constraintVertical_bias="0.5"
         app:srcCompat="@drawable/hogar" />
 
     <ImageView
@@ -84,7 +80,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageView7"
         app:layout_constraintStart_toEndOf="@+id/btn_inicio"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.739"
+        app:layout_constraintVertical_bias="0.5"
         app:srcCompat="@drawable/megusta" />
 
     <ImageView
@@ -95,7 +91,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageView7"
         app:layout_constraintStart_toEndOf="@+id/btn_corazon"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.755"
+        app:layout_constraintVertical_bias="0.5"
         app:srcCompat="@drawable/search" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

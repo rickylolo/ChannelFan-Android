@@ -1,7 +1,10 @@
 package com.example.channelfan
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.ImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.channelfan.adapter.FilmsAdapter
@@ -10,7 +13,37 @@ class Profile : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+        //Hide Toolbar
+        supportActionBar?.hide()
+
         initRecyclerView()
+
+
+        //Action Bar
+        val btn_home = findViewById<ImageView>(R.id.btn_inicio)
+        btn_home.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                val intent = Intent(this@Profile, Home::class.java)
+                startActivity(intent)
+            }
+        })
+
+        val btn_favorites = findViewById<ImageView>(R.id.btn_corazon)
+        btn_favorites.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                val intent = Intent(this@Profile, Favorites::class.java)
+                startActivity(intent)
+            }
+        })
+
+        val btn_Search = findViewById<ImageView>(R.id.btn_search)
+        btn_Search.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                val intent = Intent(this@Profile, Search::class.java)
+                startActivity(intent)
+            }
+        })
+
     }
 
     fun initRecyclerView(){

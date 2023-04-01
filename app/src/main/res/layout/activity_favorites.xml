@@ -20,7 +20,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="600dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="32dp"
@@ -28,7 +28,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintBottom_toTopOf="@id/imageView7"
+        app:layout_constraintTop_toBottomOf="@id/imageView5">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -86,4 +87,60 @@
 
 
     </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="405dp"
+        android:layout_height="78dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/rectangulo" />
+
+
+    <ImageView
+        android:id="@+id/btn_perfil"
+        android:layout_width="44dp"
+        android:layout_height="31dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView7"
+        app:layout_constraintHorizontal_bias="0.582"
+        app:layout_constraintStart_toEndOf="@+id/btn_search"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.5"
+        app:srcCompat="@drawable/usuario" />
+
+    <ImageView
+        android:id="@+id/btn_inicio"
+        android:layout_width="47dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="28dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.5"
+        app:srcCompat="@drawable/hogar" />
+
+    <ImageView
+        android:id="@+id/btn_corazon"
+        android:layout_width="38dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="108dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintStart_toEndOf="@+id/btn_inicio"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.5"
+        app:srcCompat="@drawable/megusta" />
+
+    <ImageView
+        android:id="@+id/btn_search"
+        android:layout_width="38dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="44dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintStart_toEndOf="@+id/btn_corazon"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.5"
+        app:srcCompat="@drawable/search" />
 </androidx.constraintlayout.widget.ConstraintLayout>
