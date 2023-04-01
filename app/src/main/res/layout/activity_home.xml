@@ -1,16 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Home">
 
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="204dp"
+        android:layout_height="51dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/channel" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#A191D9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="294dp"
+        android:layout_height="446dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view2">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerFilms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </FrameLayout>
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerFilms"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="401dp"
+        android:layout_height="146dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/rectangulo" />
+
+
 
 </FrameLayout>
 
