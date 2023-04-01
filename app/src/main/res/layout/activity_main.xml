@@ -24,13 +24,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="196dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="32dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="match_parent"
+            android:layout_height="162dp"
+            app:srcCompat="@mipmap/channelfanlogo_round" />
 
         <TextView
             android:id="@+id/textView"
@@ -80,7 +86,7 @@
             style="@android:style/Widget.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="96dp"
+            android:layout_marginTop="48dp"
             android:background="@drawable/login_btn_background"
             android:padding="16dp"
             android:text="Iniciar Sesión"
