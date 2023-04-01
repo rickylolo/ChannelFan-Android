@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_anchorGravity="fill_horizontal"
     tools:context=".Home">
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="204dp"
-        android:layout_height="51dp"
+        android:layout_width="168dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,45 +21,83 @@
         app:srcCompat="@drawable/channel" />
 
     <View
-        android:id="@+id/view2"
-        android:layout_width="fill_parent"
+        android:id="@+id/view"
+        android:layout_width="412dp"
         android:layout_height="1dp"
         android:background="#A191D9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        tools:layout_editor_absoluteX="0dp" />
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="294dp"
-        android:layout_height="446dp"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="413dp"
+        android:layout_height="600dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view2">
+        app:layout_constraintBottom_toTopOf="@+id/imageView7"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        tools:layout_editor_absoluteX="-2dp">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerFilms"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            tools:listitem="@layout/view_review" />
 
-    </FrameLayout>
-
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="401dp"
-        android:layout_height="146dp"
+        android:layout_width="405dp"
+        android:layout_height="78dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/rectangulo" />
 
+    <ImageView
+        android:id="@+id/btn_perfil"
+        android:layout_width="44dp"
+        android:layout_height="31dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView7"
+        app:layout_constraintHorizontal_bias="0.582"
+        app:layout_constraintStart_toEndOf="@+id/btn_search"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.733"
+        app:srcCompat="@drawable/usuario" />
 
+    <ImageView
+        android:id="@+id/btn_inicio"
+        android:layout_width="47dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="28dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.733"
+        app:srcCompat="@drawable/hogar" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/btn_corazon"
+        android:layout_width="38dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="108dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintStart_toEndOf="@+id/btn_inicio"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.739"
+        app:srcCompat="@drawable/megusta" />
+
+    <ImageView
+        android:id="@+id/btn_search"
+        android:layout_width="38dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="44dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintStart_toEndOf="@+id/btn_corazon"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.755"
+        app:srcCompat="@drawable/search" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 

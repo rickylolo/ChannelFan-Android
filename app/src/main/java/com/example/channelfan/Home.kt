@@ -17,12 +17,12 @@ class Home : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         //Hide Toolbar
         supportActionBar?.hide()
-        initRecyclerView()
+      //  initRecyclerView()
     }
 
-    fun initRecyclerView(){
+   /* fun initRecyclerView(){
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerFilms)
         recyclerView.layoutManager = GridLayoutManager(this, 2)
         recyclerView.adapter = FilmsAdapter(FilmsProvider.filmsList)
-    }
+    }*/
 }
