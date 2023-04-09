@@ -15,62 +15,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/channel" />
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="600dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="84dp"
-        android:layout_marginEnd="32dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/imageView7"
-        app:layout_constraintTop_toBottomOf="@id/imageView5"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/imageView9"
-            android:layout_width="match_parent"
-            android:layout_height="112dp"
-            app:srcCompat="@mipmap/channelfanlogo_round" />
-
-        <TextView
-            android:id="@+id/titleTextView"
-            android:text="Ricardo Grimaldo"
-            android:layout_marginTop="16dp"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/subtitleTextView"
-            android:text="Monterrey, Nuevo León"
-            android:layout_marginTop="8dp"
-            android:textSize="18sp"
-            android:textStyle="italic"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/textView_MisReseñas"
-            android:text="Mis Reseñas"
-            android:layout_marginTop="32dp"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:gravity="start"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerFilms"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-
-
-    </LinearLayout>
 
 
     <ImageView
@@ -82,50 +26,108 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/rectangulo" />
 
-
-    <ImageView
-        android:id="@+id/btn_perfil"
-        android:layout_width="44dp"
-        android:layout_height="31dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageView7"
-        app:layout_constraintHorizontal_bias="0.582"
-        app:layout_constraintStart_toEndOf="@+id/btn_search"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.5"
-        app:srcCompat="@drawable/usuario" />
-
     <ImageView
         android:id="@+id/btn_inicio"
         android:layout_width="47dp"
         android:layout_height="33dp"
         android:layout_marginStart="28dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_corazon"
+        app:layout_constraintStart_toStartOf="@+id/imageView7"
+        app:layout_constraintTop_toTopOf="@+id/btn_corazon"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/hogar" />
-
-    <ImageView
-        android:id="@+id/btn_corazon"
-        android:layout_width="38dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="108dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
-        app:layout_constraintStart_toEndOf="@+id/btn_inicio"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.5"
-        app:srcCompat="@drawable/megusta" />
 
     <ImageView
         android:id="@+id/btn_search"
         android:layout_width="38dp"
         android:layout_height="29dp"
-        android:layout_marginStart="44dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        android:layout_marginTop="19dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_corazon"
+        app:layout_constraintEnd_toStartOf="@+id/btn_perfil"
+        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toEndOf="@+id/btn_corazon"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintTop_toTopOf="@+id/btn_corazon"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/search" />
+
+    <ImageView
+        android:id="@+id/btn_perfil"
+        android:layout_width="44dp"
+        android:layout_height="31dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_search"
+        app:layout_constraintEnd_toEndOf="@+id/imageView7"
+        app:layout_constraintHorizontal_bias="0.78"
+        app:layout_constraintStart_toEndOf="@+id/btn_corazon"
+        app:layout_constraintTop_toTopOf="@+id/btn_corazon"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/usuario" />
+
+    <ImageView
+        android:id="@+id/btn_corazon"
+        android:layout_width="38dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintEnd_toEndOf="@+id/imageView7"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/btn_inicio"
+        app:srcCompat="@drawable/megusta" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_marginTop="84dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/imageView7"
+        app:layout_constraintTop_toBottomOf="@id/imageView5"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.993"
+        tools:layout_editor_absoluteX="-1dp">
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="match_parent"
+            android:layout_height="112dp"
+            app:srcCompat="@mipmap/channelfanlogo_round" />
+
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="Ricardo Grimaldo"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/subtitleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="Monterrey, Nuevo León"
+            android:textSize="18sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/textView_MisReseñas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:gravity="start"
+            android:text="Mis Reseñas"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerFilms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
