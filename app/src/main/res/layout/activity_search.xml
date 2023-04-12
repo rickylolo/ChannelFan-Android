@@ -12,79 +12,94 @@
         android:id="@+id/imageView10"
         android:layout_width="214dp"
         android:layout_height="56dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/channel" />
 
     <SearchView
         android:id="@+id/searchView"
         android:layout_width="410dp"
         android:layout_height="37dp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerHorizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView10">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerReseñas"
-        android:layout_width="405dp"
-        android:layout_height="219dp"
-        android:layout_marginBottom="144dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    </SearchView>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerHorizontal"
-        android:layout_width="409dp"
-        android:layout_height="121dp"
-        android:layout_marginBottom="12dp"
+        android:layout_width="412dp"
+        android:layout_height="116dp"
         android:scrollbars="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/recyclerHorizontal2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerHorizontal2"
-        android:layout_width="414dp"
-        android:layout_height="126dp"
-        android:layout_marginBottom="12dp"
+        android:layout_width="411dp"
+        android:layout_height="206dp"
+        android:layout_marginBottom="24dp"
         android:scrollbars="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/recyclerReseñas"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
 
     </androidx.recyclerview.widget.RecyclerView>
 
+    <TextView
+        android:id="@+id/tvCine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estrenos en Cine"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerHorizontal2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerHorizontal" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerReseñas"
+        android:layout_width="411dp"
+        android:layout_height="259dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/tvMejoresRes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mejores Reseñas"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerReseñas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerHorizontal2"
+        app:layout_constraintVertical_bias="1.0" />
+
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="405dp"
-        android:layout_height="78dp"
+        android:layout_width="412dp"
+        android:layout_height="76dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/rectangulo" />
-
-
-    <ImageView
-        android:id="@+id/btn_corazon"
-        android:layout_width="38dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="108dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_search"
-        app:layout_constraintStart_toEndOf="@+id/btn_inicio"
-        app:layout_constraintTop_toTopOf="@+id/btn_search"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/megusta" />
 
     <ImageView
         android:id="@+id/btn_search"
         android:layout_width="38dp"
         android:layout_height="29dp"
         android:layout_marginStart="44dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView7"
         app:layout_constraintStart_toEndOf="@+id/btn_corazon"
         app:srcCompat="@drawable/search" />
@@ -95,10 +110,10 @@
         android:layout_height="31dp"
         app:layout_constraintBottom_toBottomOf="@+id/btn_search"
         app:layout_constraintEnd_toEndOf="@+id/imageView7"
-        app:layout_constraintHorizontal_bias="0.683"
+        app:layout_constraintHorizontal_bias="0.682"
         app:layout_constraintStart_toEndOf="@+id/btn_search"
         app:layout_constraintTop_toTopOf="@+id/btn_search"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/usuario" />
 
     <ImageView
@@ -109,8 +124,19 @@
         app:layout_constraintBottom_toBottomOf="@+id/btn_corazon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btn_corazon"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/hogar" />
+
+    <ImageView
+        android:id="@+id/btn_corazon"
+        android:layout_width="38dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="108dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_search"
+        app:layout_constraintStart_toEndOf="@+id/btn_inicio"
+        app:layout_constraintTop_toTopOf="@+id/btn_search"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/megusta" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
