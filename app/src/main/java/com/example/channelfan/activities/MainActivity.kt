@@ -1,5 +1,6 @@
 package com.example.channelfan.activities
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -28,6 +29,8 @@ class MainActivity : AppCompatActivity() {
 
         //Hide Toolbar
         supportActionBar?.hide()
+
+
 
 
         // Ir al registro
@@ -72,8 +75,12 @@ class MainActivity : AppCompatActivity() {
                 runOnUiThread {
                     Toast.makeText(this@MainActivity, "Login Exitoso", Toast.LENGTH_SHORT).show()
                 }
+                // Obtén una referencia al objeto SharedPreferences
+                val sharedPreferences = getSharedPreferences("Sesion", Context.MODE_PRIVATE)
+
+                // Guarda el idUsuario en SharedPreferences
+                sharedPreferences.edit().putString("idUsuario", idUsuario).apply()
                 val intent = Intent(this@MainActivity, Home::class.java)
-                intent.putExtra("userId", idUsuario)
                 startActivity(intent)
             } else {
                 runOnUiThread {

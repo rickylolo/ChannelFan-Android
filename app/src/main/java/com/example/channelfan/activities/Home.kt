@@ -1,5 +1,6 @@
 package com.example.channelfan.activities
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -28,8 +29,20 @@ class Home : AppCompatActivity() {
         supportActionBar?.hide()
         obtenerPeliculas()
 
-        val userId = intent.getStringExtra("userId")
-        Log.d("Login", userId.toString())
+        // Obtén una referencia al objeto SharedPreferences
+        val sharedPreferences = getSharedPreferences("Sesion", Context.MODE_PRIVATE)
+
+        // Obtén el idUsuario almacenado en SharedPreferences
+        val idUsuario = sharedPreferences.getString("idUsuario", "")
+
+        // Verifica si el idUsuario es válido
+        if (idUsuario.isNullOrEmpty()) {
+            Toast.makeText(this@Home,"Error 404, sesión expirada NO USER ID FOUND",Toast.LENGTH_SHORT).show()
+            val intent = Intent(this@Home, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        Log.d("Login", idUsuario.toString())
 
 
         //Action Bar

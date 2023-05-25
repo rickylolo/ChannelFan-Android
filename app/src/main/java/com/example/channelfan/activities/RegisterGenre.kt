@@ -1,8 +1,10 @@
 package com.example.channelfan.activities
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
@@ -23,14 +25,33 @@ class RegisterGenre : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+
         binding = ActivityRegisterGenreBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         //Hide Toolbar
         supportActionBar?.hide()
 
+        // Obtén una referencia al objeto SharedPreferences
+        val sharedPreferences = getSharedPreferences("Sesion", Context.MODE_PRIVATE)
+
+        // Obtén el idUsuario almacenado en SharedPreferences
+        val idUsuario = sharedPreferences.getString("idUsuario", "")
+
+        // Verifica si el idUsuario es válido
+        if (idUsuario.isNullOrEmpty()) {
+            Toast.makeText(this@RegisterGenre,"Error 404, sesión expirada NO USER ID FOUND", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this@RegisterGenre, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        Log.d("Login", idUsuario.toString())
+
+
+
         //Cancel
-        val btn_Cancel = findViewById<Button>(R.id.btn_Cancel)
+        val btn_Cancel = findViewById<Button>(R.id.btn_CancelGen)
         btn_Cancel.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 val intent = Intent(this@RegisterGenre, Profile::class.java)
@@ -39,7 +60,7 @@ class RegisterGenre : AppCompatActivity() {
         })
 
         //Register Genre
-        val btn_Register = findViewById<Button>(R.id.btn_Register)
+        val btn_Register = findViewById<Button>(R.id.btn_CrearGen)
         btn_Register.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
 

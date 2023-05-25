@@ -1,10 +1,13 @@
 package com.example.channelfan.activities
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.channelfan.R
@@ -17,6 +20,18 @@ class Profile : AppCompatActivity() {
         supportActionBar?.hide()
 
         initRecyclerView()
+        // Obtén una referencia al objeto SharedPreferences
+        val sharedPreferences = getSharedPreferences("Sesion", Context.MODE_PRIVATE)
+
+        // Obtén el idUsuario almacenado en SharedPreferences
+        val idUsuario = sharedPreferences.getString("idUsuario", "")
+
+        // Verifica si el idUsuario es válido
+        if (idUsuario.isNullOrEmpty()) {
+            Toast.makeText(this@Profile,"Error 404, sesión expirada NO USER ID FOUND",Toast.LENGTH_SHORT).show()
+            val intent = Intent(this@Profile, MainActivity::class.java)
+            startActivity(intent)
+        }
 
 
         //Action Bar
