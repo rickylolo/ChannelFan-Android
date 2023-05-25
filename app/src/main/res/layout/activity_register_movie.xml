@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activitys.RegistroPelicula">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivMovie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/background" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollViewPelicula"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/LLPelicula"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2">
+
+
+            <ImageView
+                android:id="@+id/imgPelicula"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/tvPeliName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Titulo"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/edPeliTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edittext_background"
+                android:ems="10"
+                android:hint="Ingresa el Titulo"
+                android:inputType="textPersonName"
+                android:padding="16dp"
+                android:textColor="#5c5f72"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvYear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Año"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/edYear"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edittext_background"
+                android:ems="10"
+                android:hint="Ingresa el Año"
+                android:inputType="textPersonName"
+                android:padding="16dp"
+                android:textColor="#5c5f72"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvDirector"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Director"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/edDirector"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edittext_background"
+                android:ems="10"
+                android:hint="Agregar el Director"
+                android:padding="16dp"
+                android:textColor="#5c5f72"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvGenero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Generos"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/chbAventura"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Aventura" />
+
+            <CheckBox
+                android:id="@+id/chbSuspenso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Suspenso" />
+
+            <CheckBox
+                android:id="@+id/chDrama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Drama" />
+
+            <CheckBox
+                android:id="@+id/chFantasia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fantasia" />
+
+            <CheckBox
+                android:id="@+id/chFiccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ciencia Ficcion" />
+
+            <CheckBox
+                android:id="@+id/chTerror"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Terror" />
+
+            <CheckBox
+                android:id="@+id/chComedia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Comedia" />
+
+            <CheckBox
+                android:id="@+id/chInfantil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Infantil" />
+
+            <CheckBox
+                android:id="@+id/chMisterio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Misterio" />
+
+            <CheckBox
+                android:id="@+id/chAmor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Amor" />
+
+            <CheckBox
+                android:id="@+id/chMusical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Musical" />
+
+            <TextView
+                android:id="@+id/tvSinopsis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Sinopsis"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/edSinopsis"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edittext_background"
+                android:ems="10"
+                android:hint="Agregar Sinopsis"
+                android:textColor="#5c5f72"
+                android:textSize="16sp"
+                android:inputType="text|textMultiLine"
+                android:gravity="top"
+                />
+
+
+            <TextView
+                android:id="@+id/tvClasificacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Clasificacion"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/spClasificacion"
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:id="@+id/tvDuracion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Duracion"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/edDuracion"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edittext_background"
+                android:ems="10"
+                android:hint="Agrega la Duracion"
+                android:inputType="text"
+                android:padding="16dp"
+                android:textColor="#5c5f72"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvFecha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Fecha"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/edFecha"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edittext_background"
+                android:ems="10"
+                android:hint="Fecha"
+                android:inputType="text"
+                android:padding="16dp"
+                android:textColor="#5c5f72"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btnFecha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/login_btn_background"
+                android:text="Fecha" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_CrearPeli"
+                style="@android:style/Widget.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/login_btn_background"
+                android:padding="16dp"
+                android:text="Crear"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_CancelPeli"
+                style="@android:style/Widget.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="64dp"
+                android:background="@drawable/login_btn_background"
+                android:padding="16dp"
+                android:text="Cancelar"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

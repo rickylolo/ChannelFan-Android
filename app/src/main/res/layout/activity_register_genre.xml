@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activitys.RegistroGenero">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/background" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollRegGen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2">
+
+        <ImageView
+            android:id="@+id/imgGeneros"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tvnameGenero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre Genero"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/ednameGenero"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/edittext_background"
+            android:ems="10"
+            android:hint="Ingresa el Nombre"
+            android:inputType="text"
+            android:textColor="#5c5f72"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvdescGenero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descripcion de Genero"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/eddescGenero"
+            android:layout_width="match_parent"
+            android:layout_height="157dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/edittext_background"
+            android:ems="10"
+            android:hint="Ingresa la Descripcion"
+            android:inputType="text|textMultiLine"
+            android:gravity="top"
+            android:textColor="#5c5f72"
+            android:textSize="16sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_CrearGen"
+            style="@android:style/Widget.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/login_btn_background"
+            android:padding="16dp"
+            android:text="Crear Genero"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_CancelGen"
+            style="@android:style/Widget.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="64dp"
+            android:background="@drawable/login_btn_background"
+            android:padding="16dp"
+            android:text="Cancelar"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

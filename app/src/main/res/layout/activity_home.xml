@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_anchorGravity="fill_horizontal"
-    tools:context=".Home">
+    tools:context=".activities.Home">
 
 
     <ImageView

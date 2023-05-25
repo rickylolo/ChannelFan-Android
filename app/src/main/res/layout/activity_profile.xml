@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Profile">
+    tools:context=".activities.Profile">
 
     <ImageView
         android:id="@+id/imageView5"
@@ -74,6 +74,37 @@
         app:layout_constraintStart_toEndOf="@+id/btn_inicio"
         app:srcCompat="@drawable/megusta" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:src="@drawable/claqueta"
+        app:backgroundTint="@color/purple_200"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabReview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/megusta"
+        app:backgroundTint="@color/purple_700"
+        app:layout_constraintEnd_toStartOf="@+id/fab"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabGeneros"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="9dp"
+        android:src="@drawable/twitter"
+        app:backgroundTint="@color/purple_200"
+        app:layout_constraintBottom_toBottomOf="@+id/fabReview"
+        app:layout_constraintEnd_toStartOf="@+id/fabReview"
+        app:layout_constraintTop_toTopOf="@+id/fabReview" />
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -127,7 +158,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
