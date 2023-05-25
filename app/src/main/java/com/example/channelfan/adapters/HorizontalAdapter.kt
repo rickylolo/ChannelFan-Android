@@ -3,11 +3,11 @@ package com.example.channelfan.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.channelfan.Horizontal
 import com.example.channelfan.R
+import com.example.channelfan.models.ClassPelicula
 import com.example.channelfan.viewHolders.HorizontalViewHolder
 
-class HorizontalAdapter(private val HorizontalList:List<Horizontal>): RecyclerView.Adapter<HorizontalViewHolder>() {
+class HorizontalAdapter(private val HorizontalList:List<ClassPelicula>): RecyclerView.Adapter<HorizontalViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HorizontalViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)

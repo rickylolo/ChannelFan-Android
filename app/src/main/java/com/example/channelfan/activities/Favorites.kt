@@ -11,15 +11,22 @@ import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.channelfan.R
+import com.example.channelfan.endpoints.RetrofitClient
+import com.example.channelfan.models.ClassPelicula
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class Favorites : AppCompatActivity() {
+    private var listaPeliculas = arrayListOf<ClassPelicula>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorites)
         //Hide Toolbar
         supportActionBar?.hide()
 
-        initRecyclerView()
+        obtenerPeliculas()
 
         // Obtén una referencia al objeto SharedPreferences
         val sharedPreferences = getSharedPreferences("Sesion", Context.MODE_PRIVATE)
@@ -67,5 +74,19 @@ class Favorites : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerFilms)
         recyclerView.layoutManager = GridLayoutManager(this, 2)
         //recyclerView.adapter = FilmsAdapter(FilmsProvider.filmsList)
+    }
+
+    private fun obtenerPeliculas() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetrofitClient.MOVIE_WEB_SERVICE.obtenerPeliculas()
+            runOnUiThread{
+                if (call.isSuccessful){
+                    listaPeliculas = call.body()!!.listaPeliculas
+                    initRecyclerView()
+                }else {
+                    Toast.makeText(this@Favorites,"ERROR CONSULTAR,TODOS", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 }

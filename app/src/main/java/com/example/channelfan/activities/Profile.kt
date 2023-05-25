@@ -4,22 +4,29 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.channelfan.R
+import com.example.channelfan.adapters.FilmsAdapter
+import com.example.channelfan.endpoints.RetrofitClient
+import com.example.channelfan.models.ClassPelicula
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class Profile : AppCompatActivity() {
+    private var listaPeliculas = arrayListOf<ClassPelicula>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
         //Hide Toolbar
         supportActionBar?.hide()
+        obtenerPeliculas()
 
-        initRecyclerView()
         // Obtén una referencia al objeto SharedPreferences
         val sharedPreferences = getSharedPreferences("Sesion", Context.MODE_PRIVATE)
 
@@ -84,6 +91,20 @@ class Profile : AppCompatActivity() {
     fun initRecyclerView(){
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerFilms)
         recyclerView.layoutManager = GridLayoutManager(this, 2)
-        //recyclerView.adapter = FilmsAdapter(FilmsProvider.filmsList)
+        recyclerView.adapter = FilmsAdapter(listaPeliculas)
+    }
+
+    private fun obtenerPeliculas() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetrofitClient.MOVIE_WEB_SERVICE.obtenerPeliculas()
+            runOnUiThread{
+                if (call.isSuccessful){
+                    listaPeliculas = call.body()!!.listaPeliculas
+                    initRecyclerView()
+                }else {
+                    Toast.makeText(this@Profile,"ERROR CONSULTAR,TODOS", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 }

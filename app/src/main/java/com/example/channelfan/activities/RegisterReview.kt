@@ -85,7 +85,6 @@ class RegisterReview : AppCompatActivity() {
         this.review.titulo = binding.edTitulo.text.toString()
         this.review.descripcion = binding.edDescripcion.text.toString()
         this.review.calificacion = binding.tvCalificacion.text.toString()
-        this.review.fecha = binding.cVFechaEstreno.toString()
 
 
         CoroutineScope(Dispatchers.IO).launch {
