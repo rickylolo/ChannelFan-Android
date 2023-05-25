@@ -1,4 +1,4 @@
-package com.example.channelfan.adapter
+package com.example.channelfan.Adapters
 
 import android.view.View
 import android.widget.ImageView

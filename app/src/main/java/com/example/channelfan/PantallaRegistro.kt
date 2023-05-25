@@ -8,17 +8,17 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import com.example.channelfan.databinding.ActivityRegisterBinding
-import com.example.channelfan.dataclass.Usuario
-import com.example.channelfan.interfaces.RetrofitClient
+import com.example.channelfan.Modelos.ClassUsuario
+import com.example.channelfan.Endpoints.RetrofitClient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class PantallaRegistro : AppCompatActivity() {
-    private var listaUsuarios = arrayListOf<Usuario>()
+    private var listaUsuarios = arrayListOf<ClassUsuario>()
     lateinit var binding: ActivityRegisterBinding
 
-    var usuario = Usuario(null ,"","","","","","","")
+    var usuario = ClassUsuario(null ,"","","","","","","")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -47,6 +47,12 @@ class PantallaRegistro : AppCompatActivity() {
                 var isValido = validarCampos()
 
                 if (isValido){
+                    var repeatPassword = binding.editTextRepeatpassword.text.toString()
+                    var password =  binding.editTextPassword.text.toString()
+                    if(repeatPassword == password){
+                        Toast.makeText(this@PantallaRegistro,"La contraseña debe coincidir",Toast.LENGTH_SHORT).show()
+                        return
+                    }
                     agregarUsuario()
                 }
             }
@@ -56,7 +62,7 @@ class PantallaRegistro : AppCompatActivity() {
 
     fun obtenerUsuarios() {
         CoroutineScope(Dispatchers.IO).launch {
-            val call = RetrofitClient.webService.obtenerUsuarios()
+            val call = RetrofitClient.USER_WEB_SERVICE.obtenerUsuarios()
             runOnUiThread{
                 if (call.isSuccessful){
                     listaUsuarios = call.body()!!.listaUsuarios
@@ -69,13 +75,12 @@ class PantallaRegistro : AppCompatActivity() {
             }
         }
     }
-
-
     fun validarCampos(): Boolean{
         return !(binding.editTextName.text.isNullOrEmpty() || binding.editTextSurname.text.isNullOrEmpty()
                 || binding.editTextEmail.text.isNullOrEmpty() || binding.editTextPassword.text.isNullOrEmpty()
                 || binding.editTextRepeatpassword.text.isNullOrEmpty() || binding.editTextAddress.text.isNullOrEmpty())
     }
+
 
     fun  agregarUsuario(){
         this.usuario.firstName = binding.editTextName.text.toString()
@@ -83,37 +88,36 @@ class PantallaRegistro : AppCompatActivity() {
         this.usuario.email = binding.editTextEmail.text.toString()
         this.usuario.password = binding.editTextPassword.text.toString()
         this.usuario.address = binding.editTextAddress.text.toString()
-        var repeatPassword = binding.editTextRepeatpassword.text.toString()
+
         this.usuario.avatar = "1"
             //binding.etEmail.text.toString()
         this.usuario.userType = "1"
 
 
         CoroutineScope(Dispatchers.IO).launch {
-            val call = RetrofitClient.webService.agregarUsuario(usuario)
+            val call = RetrofitClient.USER_WEB_SERVICE.agregarUsuario(usuario)
             if (call.isSuccessful){
-                Log.d("Usuario", "$usuario")
+                Toast.makeText(this@PantallaRegistro,"Registro Exitoso",Toast.LENGTH_SHORT).show()
                 LimpiarCampos()
                 LimpiarObjeto()
             }
 
         }
     }
-
-
-
     fun LimpiarCampos(){
         binding.editTextName.setText("")
         binding.editTextSurname.setText("")
         binding.editTextEmail.setText("")
         binding.editTextPassword.setText("")
         binding.editTextRepeatpassword.setText("")
+        binding.editTextAddress.setText("")
     }
     fun LimpiarObjeto(){
         this.usuario.firstName = ""
         this.usuario.lastName = ""
         this.usuario.email = ""
         this.usuario.password = ""
+        this.usuario.address = ""
         this.usuario.avatar = ""
         this.usuario.userType = ""
     }

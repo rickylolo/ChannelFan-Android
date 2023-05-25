@@ -1,4 +1,4 @@
-package com.example.channelfan.adapter
+package com.example.channelfan.Adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

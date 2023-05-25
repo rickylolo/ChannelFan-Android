@@ -8,9 +8,9 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.channelfan.adapter.BannerAdapter
-import com.example.channelfan.adapter.FilmsAdapter
-import com.example.channelfan.adapter.HorizontalAdapter
+import com.example.channelfan.Adapters.BannerAdapter
+import com.example.channelfan.Adapters.FilmsAdapter
+import com.example.channelfan.Adapters.HorizontalAdapter
 
 class Search : AppCompatActivity() {
 

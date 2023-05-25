@@ -1,9 +1,9 @@
-package com.example.channelfan.dataclass
+package com.example.channelfan.Modelos
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class Usuario(
+data class ClassUsuario(
     @SerializedName("_id")
     val id: String? = null,
 
