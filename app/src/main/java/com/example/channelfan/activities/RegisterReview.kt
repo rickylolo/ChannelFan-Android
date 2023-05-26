@@ -45,7 +45,6 @@ class RegisterReview : AppCompatActivity() {
             startActivity(intent)
         }
 
-        Log.d("Login", idUsuario.toString())
 
         //Cancel
         val btn_Cancel = findViewById<Button>(R.id.btn_CancelReview)

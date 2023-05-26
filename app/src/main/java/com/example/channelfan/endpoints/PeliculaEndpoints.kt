@@ -14,6 +14,11 @@ interface PeliculaWebService {
         @Path("idPelicula") idPelicula: String
     ): Response<ClassPelicula>
 
+    @GET("pelicula{idPelicula}/genero")
+    suspend fun obtenerGenerosPelicula(
+        @Path("idPelicula") idPelicula: String
+    ): Response<ClassPelicula>
+
     @POST("pelicula")
     suspend fun agregarPelicula(
         @Body pelicula: ClassPelicula

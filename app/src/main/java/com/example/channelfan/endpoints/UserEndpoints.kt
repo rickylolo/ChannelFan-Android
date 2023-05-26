@@ -25,6 +25,22 @@ interface WebService {
         @Body usuario: ClassUsuario
     ):Response<String>
 
+    @GET("user/review/fav")
+    suspend fun agregarReseñaFavoritos(
+        @Path("idUsuario") idUsuario: String,  @Path("idReview") idReseña: String
+    ):Response<String>
+
+    @GET("user{idUsuario}/review")
+    suspend fun obtenerReseñasUsuario(
+        @Path("idUsuario") idUsuario: String
+    ):Response<String>
+
+
+    @GET("user{idUsuario}/review/fav")
+    suspend fun obtenerReseñasFavoritasUsuario(
+        @Path("idUsuario") idUsuario: String
+    ):Response<String>
+
     @PUT("user{idUsuario}")
     suspend fun actualizarUsuario(
         @Path("idUsuario") idUsuario: String,

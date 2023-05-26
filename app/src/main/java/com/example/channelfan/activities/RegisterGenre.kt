@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 class RegisterGenre : AppCompatActivity() {
 
     lateinit var binding: ActivityRegisterGenreBinding
-    var genero = ClassGenero(null ,"","")
+    var genero = ClassGenero(null ,"",null)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

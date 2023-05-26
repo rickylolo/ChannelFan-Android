@@ -17,6 +17,12 @@ interface GeneroWebService {
 
     ): Response<ClassGenero>
 
+    @GET("genero{idGenero}/pelicula")
+    suspend fun obtenerPeliculasDeUnGenero(
+        @Path("idGenero") idGenero: String
+
+    ): Response<ClassGenero>
+
     @POST("genero")
     suspend fun agregarGenero(
         @Body genero: ClassGenero

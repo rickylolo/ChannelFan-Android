@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.channelfan.R
+import com.example.channelfan.adapters.FilmsAdapter
 import com.example.channelfan.endpoints.RetrofitClient
 import com.example.channelfan.models.ClassPelicula
 import kotlinx.coroutines.CoroutineScope
@@ -73,7 +74,7 @@ class Favorites : AppCompatActivity() {
     fun initRecyclerView(){
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerFilms)
         recyclerView.layoutManager = GridLayoutManager(this, 2)
-        //recyclerView.adapter = FilmsAdapter(FilmsProvider.filmsList)
+        recyclerView.adapter = FilmsAdapter(listaPeliculas)
     }
 
     private fun obtenerPeliculas() {

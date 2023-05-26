@@ -25,26 +25,27 @@
         android:id="@+id/recyclerFilms"
         android:layout_width="match_parent"
         android:layout_height="700dp"
+        android:layout_marginTop="105dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
+
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="405dp"
-        android:layout_height="78dp"
+        android:layout_width="412dp"
+        android:layout_height="79dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/rectangulo" />
 
-
     <ImageView
         android:id="@+id/btn_inicio"
         android:layout_width="47dp"
         android:layout_height="33dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="36dp"
         app:layout_constraintBottom_toBottomOf="@+id/btn_corazon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btn_corazon"
@@ -55,33 +56,34 @@
         android:id="@+id/btn_search"
         android:layout_width="38dp"
         android:layout_height="29dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_perfil"
         app:layout_constraintStart_toEndOf="@+id/btn_corazon"
         app:srcCompat="@drawable/search" />
-
-    <ImageView
-        android:id="@+id/btn_perfil"
-        android:layout_width="44dp"
-        android:layout_height="31dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_search"
-        app:layout_constraintEnd_toEndOf="@+id/imageView7"
-        app:layout_constraintHorizontal_bias="0.646"
-        app:layout_constraintStart_toEndOf="@+id/btn_search"
-        app:layout_constraintTop_toTopOf="@+id/btn_search"
-        app:srcCompat="@drawable/usuario" />
 
     <ImageView
         android:id="@+id/btn_corazon"
         android:layout_width="38dp"
         android:layout_height="32dp"
-        android:layout_marginStart="96dp"
+        android:layout_marginStart="120dp"
         app:layout_constraintBottom_toBottomOf="@+id/btn_search"
         app:layout_constraintStart_toEndOf="@+id/btn_inicio"
         app:layout_constraintTop_toTopOf="@+id/btn_search"
-        app:layout_constraintVertical_bias="0.666"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/megusta" />
+
+    <ImageView
+        android:id="@+id/btn_perfil"
+        android:layout_width="44dp"
+        android:layout_height="31dp"
+        android:layout_marginEnd="28dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_search"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/usuario" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
