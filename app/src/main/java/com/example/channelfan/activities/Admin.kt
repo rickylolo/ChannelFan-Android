@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.channelfan.R
 import com.example.channelfan.adapters.FilmsAdapter
-import com.example.channelfan.databinding.ActivityProfileBinding
+import com.example.channelfan.databinding.ActivityAdminBinding
 import com.example.channelfan.endpoints.RetrofitClient
 import com.example.channelfan.models.ClassPelicula
 import com.example.channelfan.models.ClassUsuario
@@ -19,11 +19,11 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class Profile : AppCompatActivity() {
+class Admin : AppCompatActivity() {
     private var listaPeliculas = arrayListOf<ClassPelicula>()
     private var userLoggeado = ClassUsuario()
 
-    lateinit var binding: ActivityProfileBinding
+    lateinit var binding: ActivityAdminBinding
 
 
 
@@ -35,7 +35,7 @@ class Profile : AppCompatActivity() {
 
         // Obtén el idUsuario almacenado en SharedPreferences
         val idUsuario = sharedPreferences.getString("idUsuario", "")
-        binding = ActivityProfileBinding.inflate(layoutInflater)
+        binding = ActivityAdminBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
@@ -48,8 +48,8 @@ class Profile : AppCompatActivity() {
 
         // Verifica si el idUsuario es válido
         if (idUsuario.isNullOrEmpty()) {
-            Toast.makeText(this@Profile,"Error 404, sesión expirada NO USER ID FOUND",Toast.LENGTH_SHORT).show()
-            val intent = Intent(this@Profile, MainActivity::class.java)
+            Toast.makeText(this@Admin,"Error 404, sesión expirada NO USER ID FOUND",Toast.LENGTH_SHORT).show()
+            val intent = Intent(this@Admin, MainActivity::class.java)
             startActivity(intent)
         }
 
@@ -58,7 +58,7 @@ class Profile : AppCompatActivity() {
         val btn_home = findViewById<ImageView>(R.id.btn_inicio)
         btn_home.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                val intent = Intent(this@Profile, Home::class.java)
+                val intent = Intent(this@Admin, Home::class.java)
                 startActivity(intent)
             }
         })
@@ -66,7 +66,7 @@ class Profile : AppCompatActivity() {
         val btn_favorites = findViewById<ImageView>(R.id.btn_corazon)
         btn_favorites.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                val intent = Intent(this@Profile, Favorites::class.java)
+                val intent = Intent(this@Admin, Favorites::class.java)
                 startActivity(intent)
             }
         })
@@ -74,23 +74,27 @@ class Profile : AppCompatActivity() {
         val btn_Search = findViewById<ImageView>(R.id.btn_search)
         btn_Search.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                val intent = Intent(this@Profile, Search::class.java)
+                val intent = Intent(this@Admin, Search::class.java)
                 startActivity(intent)
             }
         })
 
 
-        // Floatin Action Button
-
-        val btn_Admin = findViewById<ImageView>(R.id.fabAdmin)
-        btn_Admin.setOnClickListener(object : View.OnClickListener {
+        // Floating Action Buttons
+        val btn_Genero = findViewById<ImageView>(R.id.fabGenero)
+        btn_Genero.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                val intent = Intent(this@Profile, Admin::class.java)
+                val intent = Intent(this@Admin, RegisterGenre::class.java)
                 startActivity(intent)
             }
         })
-
-
+        val btn_Pelicula = findViewById<ImageView>(R.id.fabMovies)
+        btn_Pelicula.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                val intent = Intent(this@Admin, RegisterMovie::class.java)
+                startActivity(intent)
+            }
+        })
 
     }
 
@@ -108,7 +112,7 @@ class Profile : AppCompatActivity() {
                     listaPeliculas = call.body()!!.listaPeliculas
                     initRecyclerView()
                 }else {
-                    Toast.makeText(this@Profile,"ERROR CONSULTAR,TODOS", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Admin,"ERROR CONSULTAR,TODOS", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -123,7 +127,7 @@ class Profile : AppCompatActivity() {
                     binding.tvNombreProfile.text = userLoggeado.firstName
                     binding.tvUbicacionProfile.text = userLoggeado.address
                 }else {
-                    Toast.makeText(this@Profile,"ERROR CONSULTAR USUARIO", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Admin,"ERROR CONSULTAR USUARIO", Toast.LENGTH_SHORT).show()
                 }
             }
         }
