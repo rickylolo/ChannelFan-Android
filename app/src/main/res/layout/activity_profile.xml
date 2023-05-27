@@ -6,16 +6,71 @@
     android:layout_height="match_parent"
     tools:context=".activities.Profile">
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="204dp"
-        android:layout_height="51dp"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/channel" />
+        app:layout_constraintTop_toTopOf="parent">
 
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="204dp"
+                android:layout_height="51dp"
+                app:srcCompat="@drawable/channel" />
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="match_parent"
+                android:layout_height="112dp"
+                app:srcCompat="@mipmap/channelfanlogo_round" />
+
+            <TextView
+                android:id="@+id/titleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="Ricardo Grimaldo"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/subtitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="Monterrey, Nuevo León"
+                android:textSize="18sp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/textView_MisReseñas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:gravity="start"
+                android:layout_margin="15dp"
+                android:text="Mis Reseñas"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerFilms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
 
     <ImageView
         android:id="@+id/imageView7"
@@ -25,6 +80,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/rectangulo" />
+
 
     <ImageView
         android:id="@+id/btn_inicio"
@@ -80,85 +136,31 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:src="@drawable/claqueta"
+        android:layout_marginBottom="10dp"
         app:backgroundTint="@color/purple_200"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintBottom_toTopOf="@+id/fabReview"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabReview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/megusta"
+        android:layout_marginBottom="10dp"
         app:backgroundTint="@color/purple_700"
-        app:layout_constraintEnd_toStartOf="@+id/fab"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintBottom_toTopOf="@+id/fabGeneros"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabGeneros"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_marginEnd="9dp"
         android:src="@drawable/twitter"
+        android:layout_marginBottom="10dp"
         app:backgroundTint="@color/purple_200"
-        app:layout_constraintBottom_toBottomOf="@+id/fabReview"
-        app:layout_constraintEnd_toStartOf="@+id/fabReview"
-        app:layout_constraintTop_toTopOf="@+id/fabReview" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="600dp"
-        android:layout_marginTop="84dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/imageView7"
-        app:layout_constraintTop_toBottomOf="@id/imageView5"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.993"
-        tools:layout_editor_absoluteX="-1dp">
-
-        <ImageView
-            android:id="@+id/imageView9"
-            android:layout_width="match_parent"
-            android:layout_height="112dp"
-            app:srcCompat="@mipmap/channelfanlogo_round" />
-
-        <TextView
-            android:id="@+id/titleTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
-            android:text="Ricardo Grimaldo"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/subtitleTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:text="Monterrey, Nuevo León"
-            android:textSize="18sp"
-            android:textStyle="italic" />
-
-        <TextView
-            android:id="@+id/textView_MisReseñas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:gravity="start"
-            android:text="Mis Reseñas"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerFilms"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
+        app:layout_constraintBottom_toTopOf="@+id/imageView7"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
