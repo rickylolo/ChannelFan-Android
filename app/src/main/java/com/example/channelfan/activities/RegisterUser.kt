@@ -16,8 +16,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class RegisterUser : AppCompatActivity() {
-
-    private var listaUsuarios = arrayListOf<ClassUsuario>()
     lateinit var binding: ActivityRegisterBinding
     var usuario = ClassUsuario(null ,"","","","","","","")
 
@@ -30,7 +28,7 @@ class RegisterUser : AppCompatActivity() {
 
         //Hide Toolbar
         supportActionBar?.hide()
-        obtenerUsuarios()
+
 
         //Cancel
         val btn_Cancel = findViewById<Button>(R.id.btn_Cancel)
@@ -78,21 +76,6 @@ class RegisterUser : AppCompatActivity() {
     }
 
 
-    fun obtenerUsuarios() {
-        CoroutineScope(Dispatchers.IO).launch {
-            val call = RetrofitClient.USER_WEB_SERVICE.obtenerUsuarios()
-            runOnUiThread{
-                if (call.isSuccessful){
-                    listaUsuarios = call.body()!!.listaUsuarios
-                    listaUsuarios?.forEach { usuario ->
-                        Log.d("Usuarios", usuario.toString()) // Imprimir cada usuario en la consola
-                    }
-                }else {
-                    Toast.makeText(this@RegisterUser,"ERROR CONSULTAR,TODOS",Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
-    }
     fun validarCampos(): Boolean{
         return !(binding.editTextName.text.isNullOrEmpty() || binding.editTextSurname.text.isNullOrEmpty()
                 || binding.editTextEmail.text.isNullOrEmpty() || binding.editTextPassword.text.isNullOrEmpty()

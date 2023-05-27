@@ -11,27 +11,42 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.channelfan.R
 import com.example.channelfan.adapters.FilmsAdapter
+import com.example.channelfan.databinding.ActivityMainBinding
+import com.example.channelfan.databinding.ActivityProfileBinding
+import com.example.channelfan.databinding.ActivityRegisterBinding
 import com.example.channelfan.endpoints.RetrofitClient
 import com.example.channelfan.models.ClassPelicula
+import com.example.channelfan.models.ClassUsuario
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class Profile : AppCompatActivity() {
     private var listaPeliculas = arrayListOf<ClassPelicula>()
+    private var userLoggeado = ClassUsuario()
+
+    lateinit var binding: ActivityProfileBinding
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_profile)
-        //Hide Toolbar
-        supportActionBar?.hide()
-        obtenerPeliculas()
 
         // Obtén una referencia al objeto SharedPreferences
         val sharedPreferences = getSharedPreferences("Sesion", Context.MODE_PRIVATE)
 
         // Obtén el idUsuario almacenado en SharedPreferences
         val idUsuario = sharedPreferences.getString("idUsuario", "")
+        binding = ActivityProfileBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+
+        //Hide Toolbar
+        supportActionBar?.hide()
+        obtenerUser(idUsuario.toString())
+        obtenerPeliculas()
+
+
 
         // Verifica si el idUsuario es válido
         if (idUsuario.isNullOrEmpty()) {
@@ -66,25 +81,6 @@ class Profile : AppCompatActivity() {
             }
         })
 
-        //BOTONES FLOTANTES
-        //CREAR PELICULA
-        val fab: View = findViewById(R.id.fab)
-        fab.setOnClickListener { view ->
-            val intent = Intent(this@Profile, RegisterMovie::class.java)
-            startActivity(intent)
-        }
-        //CREAR Reseña
-        val fabReview: View = findViewById(R.id.fabReview)
-        fabReview.setOnClickListener { view ->
-            val intent = Intent(this@Profile, RegisterReview::class.java)
-            startActivity(intent)
-        }
-        //CREAR GENEROS
-        val fabGEN: View = findViewById(R.id.fabGeneros)
-        fabGEN.setOnClickListener { view ->
-            val intent = Intent(this@Profile, RegisterGenre::class.java)
-            startActivity(intent)
-        }
 
     }
 
@@ -107,4 +103,21 @@ class Profile : AppCompatActivity() {
             }
         }
     }
+
+    private fun obtenerUser(idUser : String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetrofitClient.USER_WEB_SERVICE.obtenerUsuario(idUser)
+            runOnUiThread{
+                if (call.isSuccessful){
+                    userLoggeado = call.body()!!
+                    binding.tvNombreProfile.text = userLoggeado.firstName
+                    binding.tvUbicacionProfile.text = userLoggeado.address
+                }else {
+                    Toast.makeText(this@Profile,"ERROR CONSULTAR USUARIO", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+
 }
