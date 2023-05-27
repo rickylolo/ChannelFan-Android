@@ -8,82 +8,84 @@
     tools:layout_editor_absoluteX="7dp"
     tools:layout_editor_absoluteY="-18dp">
 
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="214dp"
-        android:layout_height="56dp"
+    <ScrollView
+        android:layout_width="465dp"
+        android:layout_height="590dp"
+        tools:layout_editor_absoluteX="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView10"
+                android:layout_width="214dp"
+                android:layout_height="56dp"
+                app:srcCompat="@drawable/channel" />
+
+            <SearchView
+                android:id="@+id/searchView"
+                android:layout_width="410dp"
+                android:layout_height="37dp"
+                android:layout_margin="10dp">
+
+            </SearchView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerHorizontal"
+                android:layout_width="382dp"
+                android:layout_height="190dp"
+                android:layout_margin="10dp"
+                android:scrollbars="horizontal">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/tvMejoresRes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Mejores Reseñas" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerHorizontal2"
+                android:layout_width="411dp"
+                android:layout_height="206dp"
+                android:layout_margin="10dp"
+                android:layout_marginBottom="24dp"
+                android:scrollbars="horizontal">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/tvCine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Estrenos en Cine" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerReseñas"
+                android:layout_width="409dp"
+                android:layout_height="238dp"
+                android:layout_margin="10dp">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <ScrollView
+        android:layout_width="467dp"
+        android:layout_height="916dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/channel" />
+        android:layout_margin="10dp">
 
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="410dp"
-        android:layout_height="37dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10">
+    </ScrollView>
 
-    </SearchView>
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerHorizontal"
-        android:layout_width="412dp"
-        android:layout_height="116dp"
-        android:scrollbars="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerHorizontal2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView">
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerHorizontal2"
-        android:layout_width="411dp"
-        android:layout_height="206dp"
-        android:layout_marginBottom="24dp"
-        android:scrollbars="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerReseñas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-    <TextView
-        android:id="@+id/tvCine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Estrenos en Cine"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerHorizontal2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerHorizontal" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerReseñas"
-        android:layout_width="411dp"
-        android:layout_height="259dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-    <TextView
-        android:id="@+id/tvMejoresRes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mejores Reseñas"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerReseñas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerHorizontal2"
-        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/imageView7"

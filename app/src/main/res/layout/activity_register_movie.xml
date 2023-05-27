@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activitys.RegistroPelicula">
+    tools:context=".activities.RegisterMovie">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -264,10 +264,15 @@
                 android:background="@drawable/edittext_background"
                 android:ems="10"
                 android:hint="Fecha"
-                android:inputType="text"
                 android:padding="16dp"
                 android:textColor="#5c5f72"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:focusable="false"
+                android:inputType="none"
+                android:textIsSelectable="false"
+                />
 
             <Button
                 android:id="@+id/btnFecha"
