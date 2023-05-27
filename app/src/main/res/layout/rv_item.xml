@@ -26,33 +26,6 @@
             android:textColor="@color/black"
             android:textSize="10sp"
             android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="2"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnEditar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginHorizontal="5dp"
-                android:text="Favoritos"
-                android:textSize="7sp" />
-
-            <Button
-                android:id="@+id/btnBorrar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginHorizontal="5dp"
-                android:text="Reseña"
-                android:backgroundTint="@color/red"
-                android:textSize="7sp" />
-
-        </LinearLayout>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

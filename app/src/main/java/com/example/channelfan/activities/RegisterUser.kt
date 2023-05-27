@@ -49,7 +49,7 @@ class RegisterUser : AppCompatActivity() {
                 if (isValido){
                     var repeatPassword = binding.editTextRepeatpassword.text.toString()
                     var password =  binding.editTextPassword.text.toString()
-                    if(repeatPassword == password){
+                    if(repeatPassword != password){
                         runOnUiThread {
                             Toast.makeText(
                                 this@RegisterUser,
@@ -60,6 +60,7 @@ class RegisterUser : AppCompatActivity() {
                         return
                     }
                     agregarUsuario()
+
                 }
                 else{
                     runOnUiThread {
@@ -96,9 +97,18 @@ class RegisterUser : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             val call = RetrofitClient.USER_WEB_SERVICE.agregarUsuario(usuario)
             if (call.isSuccessful){
-                Toast.makeText(this@RegisterUser,"Registro Exitoso",Toast.LENGTH_SHORT).show()
+                runOnUiThread {
+                    Toast.makeText(this@RegisterUser, "Registro Exitoso", Toast.LENGTH_SHORT).show()
+                }
                 LimpiarCampos()
                 LimpiarObjeto()
+                val intent = Intent(this@RegisterUser, MainActivity::class.java)
+                startActivity(intent)
+            }
+            else{
+                runOnUiThread {
+                    Toast.makeText(this@RegisterUser, "Ya existen usuarios con esas credenciales", Toast.LENGTH_SHORT).show()
+                }
             }
 
         }
