@@ -95,8 +95,8 @@
                 android:id="@+id/tvCalificacion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Calificacion"
                 android:padding="10dp"
+                android:text="Calificacion"
                 android:textColor="#000000"
                 android:textSize="16sp" />
 
