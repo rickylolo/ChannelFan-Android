@@ -13,7 +13,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/ivEditFilm"
+            android:id="@+id/iv_edit_film"
             android:layout_width="150dp"
             android:layout_height="250dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -22,7 +22,7 @@
             tools:background="@drawable/suzume" />
 
         <TextView
-            android:id="@+id/tvFilmName"
+            android:id="@+id/tv_edit_filmName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -30,18 +30,18 @@
             android:textSize="21sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivEditFilm"
+            app:layout_constraintTop_toBottomOf="@+id/iv_edit_film"
             tools:text="Hola" />
 
         <TextView
-            android:id="@+id/tvDescription"
+            android:id="@+id/tv_edit_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             app:fontFamily="sans-serif-black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvFilmName"
+            app:layout_constraintTop_toBottomOf="@id/tv_edit_filmName"
             tools:text="Descripcion" />
 
         <LinearLayout
@@ -49,10 +49,22 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+            app:layout_constraintTop_toBottomOf="@+id/tv_edit_description"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="8dp">
+
+            <Button
+                android:id="@+id/btn_edit_film"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Editar" />
+
+            <Button
+                android:id="@+id/btn_delete_film"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Borrar" />
 
         </LinearLayout>
 

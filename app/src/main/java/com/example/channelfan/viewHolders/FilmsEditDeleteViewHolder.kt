@@ -8,11 +8,11 @@ import com.bumptech.glide.Glide
 import com.example.channelfan.models.ClassPelicula
 import com.example.channelfan.R
 
-class FilmsViewHolder(view: View): RecyclerView.ViewHolder(view) {
+class FilmsEditDeleteViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
-    val filmName = view.findViewById<TextView>(R.id.tvFilmName)
-    val filmDescription = view.findViewById<TextView>(R.id.tvDescription)
-    val filmPhoto = view.findViewById<ImageView>(R.id.ivEditFilm)
+    val filmName = view.findViewById<TextView>(R.id.tv_edit_filmName)
+    val filmDescription = view.findViewById<TextView>(R.id.tv_edit_description)
+    val filmPhoto = view.findViewById<ImageView>(R.id.iv_edit_film)
 
 
     fun render(filmsModel : ClassPelicula){

@@ -135,19 +135,48 @@
             android:textStyle="italic" />
 
         <TextView
-            android:id="@+id/textView_MisReseñas"
+            android:id="@+id/textView_Admin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:gravity="start"
-            android:text="Mis Reseñas"
+            android:text="Administación"
             android:textSize="18sp"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/textView_GenerosAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:gravity="center"
+            android:text="Generos"
+            android:textSize="18sp"
+            />
+
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerFilms"
+            android:id="@+id/recyclerGenresEditDelete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/textView_PeliculasAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:gravity="center"
+            android:text="Películas"
+            android:textSize="18sp"
+           />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerFilmsEditDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
 
     </LinearLayout>
 
