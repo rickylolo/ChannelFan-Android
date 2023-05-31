@@ -11,8 +11,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.channelfan.R
 import com.example.channelfan.adapters.FilmsAdapter
+import com.example.channelfan.adapters.GenreEditDeleteAdapter
 import com.example.channelfan.databinding.ActivityAdminBinding
 import com.example.channelfan.endpoints.RetrofitClient
+import com.example.channelfan.models.ClassGenero
 import com.example.channelfan.models.ClassPelicula
 import com.example.channelfan.models.ClassUsuario
 import kotlinx.coroutines.CoroutineScope
@@ -21,6 +23,7 @@ import kotlinx.coroutines.launch
 
 class Admin : AppCompatActivity() {
     private var listaPeliculas = arrayListOf<ClassPelicula>()
+    private var listaGeneros = arrayListOf<ClassGenero>()
     private var userLoggeado = ClassUsuario()
 
     lateinit var binding: ActivityAdminBinding
@@ -43,6 +46,7 @@ class Admin : AppCompatActivity() {
         supportActionBar?.hide()
         obtenerUser(idUsuario.toString())
         obtenerPeliculas()
+        obtenerGeneros()
 
 
 
@@ -84,7 +88,7 @@ class Admin : AppCompatActivity() {
         val btn_Genero = findViewById<ImageView>(R.id.fabGenero)
         btn_Genero.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                val intent = Intent(this@Admin, RegisterGenre::class.java)
+                val intent = Intent(this@Admin, Genre::class.java)
                 startActivity(intent)
             }
         })
@@ -98,10 +102,16 @@ class Admin : AppCompatActivity() {
 
     }
 
-    fun initRecyclerView(){
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerFilms)
+    fun initRecyclerViewFilms(){
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerFilmsEditDelete)
         recyclerView.layoutManager = GridLayoutManager(this, 2)
         recyclerView.adapter = FilmsAdapter(listaPeliculas)
+    }
+
+    fun initRecyclerViewGenres(){
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerGenresEditDelete)
+        recyclerView.layoutManager = GridLayoutManager(this, 1)
+        recyclerView.adapter = GenreEditDeleteAdapter(listaGeneros)
     }
 
     private fun obtenerPeliculas() {
@@ -110,13 +120,28 @@ class Admin : AppCompatActivity() {
             runOnUiThread{
                 if (call.isSuccessful){
                     listaPeliculas = call.body()!!.listaPeliculas
-                    initRecyclerView()
+                    initRecyclerViewFilms()
                 }else {
                     Toast.makeText(this@Admin,"ERROR CONSULTAR,TODOS", Toast.LENGTH_SHORT).show()
                 }
             }
         }
     }
+
+    private fun obtenerGeneros() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetrofitClient.GENRE_WEB_SERVICE.obtenerGeneros()
+            runOnUiThread{
+                if (call.isSuccessful){
+                    listaGeneros = call.body()!!.listaGeneros
+                    initRecyclerViewGenres()
+                }else {
+                    Toast.makeText(this@Admin,"ERROR CONSULTAR,TODOS", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
 
     private fun obtenerUser(idUser : String) {
         CoroutineScope(Dispatchers.IO).launch {

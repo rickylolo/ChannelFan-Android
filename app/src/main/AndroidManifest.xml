@@ -16,7 +16,7 @@
             android:name=".activities.Admin"
             android:exported="true" />
         <activity
-            android:name=".activities.RegisterGenre"
+            android:name=".activities.Genre"
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />
         <activity

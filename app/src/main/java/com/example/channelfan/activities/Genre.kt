@@ -16,7 +16,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class RegisterGenre : AppCompatActivity() {
+class Genre : AppCompatActivity() {
 
     lateinit var binding: ActivityRegisterGenreBinding
     var genero = ClassGenero(null ,"",null)
@@ -41,8 +41,8 @@ class RegisterGenre : AppCompatActivity() {
 
         // Verifica si el idUsuario es válido
         if (idUsuario.isNullOrEmpty()) {
-            Toast.makeText(this@RegisterGenre,"Error 404, sesión expirada NO USER ID FOUND", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this@RegisterGenre, MainActivity::class.java)
+            Toast.makeText(this@Genre,"Error 404, sesión expirada NO USER ID FOUND", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this@Genre, MainActivity::class.java)
             startActivity(intent)
         }
 
@@ -54,7 +54,7 @@ class RegisterGenre : AppCompatActivity() {
         val btn_Cancel = findViewById<Button>(R.id.btn_CancelGen)
         btn_Cancel.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                val intent = Intent(this@RegisterGenre, Profile::class.java)
+                val intent = Intent(this@Genre, Profile::class.java)
                 startActivity(intent)
             }
         })
@@ -69,7 +69,7 @@ class RegisterGenre : AppCompatActivity() {
                 if (isValido) {
                     agregarGenero()
                 } else {
-                    Toast.makeText(this@RegisterGenre, "Faltan llenar campos", Toast.LENGTH_SHORT)
+                    Toast.makeText(this@Genre, "Faltan llenar campos", Toast.LENGTH_SHORT)
                         .show()
                     return
                 }
@@ -90,14 +90,14 @@ class RegisterGenre : AppCompatActivity() {
             val call = RetrofitClient.GENRE_WEB_SERVICE.agregarGenero(genero)
             if (call.isSuccessful){
                 runOnUiThread {
-                    Toast.makeText(this@RegisterGenre, "Registro Exitoso", Toast.LENGTH_SHORT)
+                    Toast.makeText(this@Genre, "Registro Exitoso", Toast.LENGTH_SHORT)
                         .show()
                 }
                 LimpiarCampos()
                 LimpiarObjeto()
             }else{
                 runOnUiThread {
-                    Toast.makeText(this@RegisterGenre, "ERROR Registro", Toast.LENGTH_SHORT)
+                    Toast.makeText(this@Genre, "ERROR Registro", Toast.LENGTH_SHORT)
                 }
             }
         }

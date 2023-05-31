@@ -12,7 +12,7 @@ class FilmsEditDeleteAdapter(private val FilmList:List<ClassPelicula>): Recycler
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmsEditDeleteViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        return FilmsEditDeleteViewHolder(layoutInflater.inflate(R.layout.item_film, parent, false))
+        return FilmsEditDeleteViewHolder(layoutInflater.inflate(R.layout.item_edit_film, parent, false))
     }
 
     override fun onBindViewHolder(holder: FilmsEditDeleteViewHolder, position: Int) {
