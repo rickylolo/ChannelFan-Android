@@ -4,15 +4,12 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import com.example.channelfan.R
-import com.example.channelfan.databinding.ActivityRegisterGenreBinding
 import com.example.channelfan.databinding.ActivityRegisterReviewBinding
 import com.example.channelfan.endpoints.RetrofitClient
-import com.example.channelfan.models.ClassGenero
 import com.example.channelfan.models.ClassReseña
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

@@ -100,7 +100,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="600dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="124dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@id/imageView7"
         app:layout_constraintTop_toBottomOf="@id/imageView5"
@@ -108,18 +108,16 @@
         app:layout_constraintVertical_bias="0.993"
         tools:layout_editor_absoluteX="-1dp">
 
-        <ImageView
-            android:id="@+id/imageView9"
-            android:layout_width="match_parent"
-            android:layout_height="112dp"
-            app:srcCompat="@mipmap/channelfanlogo_round" />
+
 
         <TextView
             android:id="@+id/tvNombreProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="start"
             android:text="Ricardo Grimaldo"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -129,7 +127,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:gravity="center"
+            android:layout_marginStart="24dp"
+            android:gravity="start"
             android:text="Monterrey, Nuevo León"
             android:textSize="18sp"
             android:textStyle="italic" />
@@ -142,7 +141,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:gravity="start"
-            android:text="Administación"
+            android:text="Administración"
             android:textSize="18sp"
             android:textStyle="bold" />
 

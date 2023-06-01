@@ -14,8 +14,8 @@
 
         <ImageView
             android:id="@+id/iv_edit_film"
-            android:layout_width="150dp"
-            android:layout_height="250dp"
+            android:layout_width="195dp"
+            android:layout_height="265dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -28,6 +28,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="21sp"
+            android:paddingTop="6dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_edit_film"
@@ -38,6 +39,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:paddingTop="6dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="6dp"
             app:fontFamily="sans-serif-black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -56,15 +61,21 @@
 
             <Button
                 android:id="@+id/btn_edit_film"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Editar" />
+                android:layout_width="95dp"
+                android:layout_height="45dp"
+                android:text="Editar"
+                android:textSize="12sp"
+                android:layout_margin="2dp"/>
 
             <Button
                 android:id="@+id/btn_delete_film"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Borrar" />
+                android:layout_width="95dp"
+                android:layout_height="45dp"
+                android:text="Borrar"
+                android:textSize="12sp"
+                android:backgroundTint="@color/red"
+                android:layout_margin="2dp"/>
+
 
         </LinearLayout>
 

@@ -49,7 +49,7 @@ class FilmsEditDeleteAdapter(private val FilmList:List<ClassPelicula>): Recycler
                         handler.post {
                             if (call.isSuccessful) {
                                 Toast.makeText(holder.itemView.context, "PELICULA ELIMINADO", Toast.LENGTH_SHORT).show()
-                                val intent = Intent(holder.itemView.context, Movie::class.java)
+                                val intent = Intent(holder.itemView.context, Admin::class.java)
                                 holder.itemView.context.startActivity(intent)
 
                             } else {

@@ -37,7 +37,8 @@ class MainActivity : AppCompatActivity() {
         val btn_Register = findViewById<Button>(R.id.btn_Register)
         btn_Register.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                val intent = Intent(this@MainActivity, RegisterUser::class.java)
+                val intent = Intent(this@MainActivity, User::class.java)
+                intent.putExtra("isEditando", false)
                 startActivity(intent)
             }
         })

@@ -36,7 +36,6 @@ class Movie : AppCompatActivity() {
     lateinit var ivImg : ImageView
     lateinit var binding: ActivityMovieBinding
     var pelicula = ClassPelicula(null ,"","","",null,"","","","","","")
-    val isEditando = intent.getBooleanExtra("isEditando", false)
 
 
     private var spClasifiacion:Spinner?=null
@@ -68,6 +67,8 @@ class Movie : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val isEditando = intent.getBooleanExtra("isEditando", false)
+        Log.d("Movie", "Valor de isEditando: $isEditando")
         if(isEditando){
             obtenerPelicula()
         }
@@ -101,7 +102,6 @@ class Movie : AppCompatActivity() {
                 }
                 if(!isEditando){
                     agregarPelicula()
-                    return
                 }else{
                     editarPelicula()
                 }
@@ -159,13 +159,13 @@ class Movie : AppCompatActivity() {
     fun validarCampos(): Boolean{
         return !(binding.edPeliTitulo.text.isNullOrEmpty() || binding.edFecha.text.isNullOrEmpty()|| binding.edDirector.text.isNullOrEmpty()|| binding.tvClasificacion.text.isNullOrEmpty())
     }
-    fun  editarPelicula(){
+    fun editarPelicula(){
         this.pelicula.titulo = binding.edPeliTitulo.text.toString()
         this.pelicula.año =  binding.edFecha.text.toString()
         this.pelicula.director = binding.edDirector.text.toString()
         this.pelicula.generos =null
         this.pelicula.clasificacion = binding.tvClasificacion.text.toString()
-        this.pelicula.sinopsis = binding.edSinopsis.toString()
+        this.pelicula.sinopsis = binding.edSinopsis.text.toString()
 
 
         CoroutineScope(Dispatchers.IO).launch {
@@ -192,30 +192,32 @@ class Movie : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             val idPelicula = intent.getStringExtra("idPelicula")
             val call = RetrofitClient.MOVIE_WEB_SERVICE.obtenerPelicula(idPelicula.toString())
-            if (call.isSuccessful){
-                pelicula = call.body()!!
-                binding.tvPeliName.text = pelicula.titulo
-                binding.tvYear.text = pelicula.año
-                binding.tvDirector.text = pelicula.director
-                binding.tvSinopsis.text = pelicula.sinopsis
-                binding.tvClasificacion.text = pelicula.clasificacion
-                binding.tvDuracion.text = pelicula.duracion
-                binding.tvFecha.text = pelicula.fechaEstreno
+            runOnUiThread {
+                if (call.isSuccessful) {
+                    pelicula = call.body()!!
+                    binding.edPeliTitulo.setText(pelicula.titulo)
+                    binding.edYear.setText(pelicula.año)
+                    binding.edDirector.setText(pelicula.director)
+                    binding.edSinopsis.setText(pelicula.sinopsis)
+                    binding.edDuracion.setText(pelicula.duracion)
+                    binding.edFecha.setText(pelicula.fechaEstreno)
 
-            }else{
-                runOnUiThread {
-                    Toast.makeText(this@Movie, "ERROR Obtener Pelicula", Toast.LENGTH_SHORT)
+
+
+                } else {
+                        Toast.makeText(this@Movie, "ERROR Obtener Pelicula", Toast.LENGTH_SHORT)
+
                 }
             }
         }
     }
-    fun  agregarPelicula(){
+    fun agregarPelicula(){
         this.pelicula.titulo = binding.edPeliTitulo.text.toString()
         this.pelicula.año =  binding.edFecha.text.toString()
         this.pelicula.director = binding.edDirector.text.toString()
         this.pelicula.generos =null
         this.pelicula.clasificacion = binding.tvClasificacion.text.toString()
-        this.pelicula.sinopsis = binding.edSinopsis.toString()
+        this.pelicula.sinopsis = binding.edSinopsis.text.toString()
 
 
         CoroutineScope(Dispatchers.IO).launch {
@@ -241,7 +243,7 @@ class Movie : AppCompatActivity() {
         binding.edFecha.setText("")
         binding.edDirector.setText("")
         binding.edSinopsis.setText("")
-        binding.tvClasificacion.setText("")
+
 
     }
     fun LimpiarObjeto(){

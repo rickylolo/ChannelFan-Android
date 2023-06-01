@@ -38,6 +38,16 @@
                 android:layout_height="112dp"
                 app:srcCompat="@mipmap/channelfanlogo_round" />
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabEditProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:paddingTop="8dp"
+                android:paddingRight="8dp"
+                android:src="@drawable/twitter"
+                app:backgroundTint="@color/purple_200" />
+
             <TextView
                 android:id="@+id/tvNombreProfile"
                 android:layout_width="match_parent"

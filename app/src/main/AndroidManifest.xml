@@ -40,7 +40,7 @@
             android:name=".activities.Home"
             android:exported="true" />
         <activity
-            android:name=".activities.RegisterUser"
+            android:name=".activities.User"
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />
         <activity

@@ -80,7 +80,7 @@ class Profile : AppCompatActivity() {
         })
 
 
-        // Floatin Action Button
+        // Floating Action Button
 
         val btn_Admin = findViewById<ImageView>(R.id.fabAdmin)
         btn_Admin.setOnClickListener(object : View.OnClickListener {
@@ -90,6 +90,14 @@ class Profile : AppCompatActivity() {
             }
         })
 
+        val btn_EditProfile = findViewById<ImageView>(R.id.fabEditProfile)
+        btn_EditProfile.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                val intent = Intent(this@Profile, User::class.java)
+                intent.putExtra("isEditando", true)
+                startActivity(intent)
+            }
+        })
 
 
     }

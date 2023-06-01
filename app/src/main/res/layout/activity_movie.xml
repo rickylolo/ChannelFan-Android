@@ -223,7 +223,7 @@
             <EditText
                 android:id="@+id/edSinopsis"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="250dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/edittext_background"
                 android:ems="10"
@@ -232,6 +232,7 @@
                 android:inputType="text|textMultiLine"
                 android:textColor="#5c5f72"
                 android:textSize="16sp" />
+
 
 
             <TextView

@@ -8,8 +8,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 object AppConstantes {
-    const val BASE_URL ="https://channelfan-server.herokuapp.com/api/"
+    const val BASE_URL ="http://192.168.100.11:3000/api/"
 }
+
+//"https://channelfan-server.herokuapp.com/api/"
 
 object RetrofitClient {
     val USER_WEB_SERVICE: WebService by lazy {
