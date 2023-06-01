@@ -30,7 +30,7 @@ class GenreEditDeleteAdapter(private val GenreList:List<ClassGenero>): RecyclerV
         holder.render(genreModel, object : GenreEditDeleteViewHolder.OnItemClickListener {
             override fun onEditClick(id: String) {
                 val intent = Intent(holder.itemView.context, Genre::class.java)
-                intent.putExtra("Id", id)
+                intent.putExtra("idGenero", id)
                 intent.putExtra("isEditando", true)
                 holder.itemView.context.startActivity(intent)
             }

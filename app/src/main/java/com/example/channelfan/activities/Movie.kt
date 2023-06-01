@@ -13,7 +13,7 @@ import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.DialogFragment
 import com.example.channelfan.R
-import com.example.channelfan.databinding.ActivityRegisterMovieBinding
+import com.example.channelfan.databinding.ActivityMovieBinding
 import com.example.channelfan.endpoints.RetrofitClient
 import com.example.channelfan.models.ClassPelicula
 import kotlinx.coroutines.CoroutineScope
@@ -21,7 +21,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.*
 
-class RegisterMovie : AppCompatActivity() {
+class Movie : AppCompatActivity() {
 
     val pickMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()){ uri->
         if(uri!=null){
@@ -34,8 +34,10 @@ class RegisterMovie : AppCompatActivity() {
         }
     }
     lateinit var ivImg : ImageView
-    lateinit var binding: ActivityRegisterMovieBinding
+    lateinit var binding: ActivityMovieBinding
     var pelicula = ClassPelicula(null ,"","","",null,"","","","","","")
+    val isEditando = intent.getBooleanExtra("isEditando", false)
+
 
     private var spClasifiacion:Spinner?=null
     private var cajaFecha:EditText?=null
@@ -43,7 +45,7 @@ class RegisterMovie : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityRegisterMovieBinding.inflate(layoutInflater)
+        binding = ActivityMovieBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         cajaFecha = findViewById(R.id.edFecha)
@@ -61,15 +63,14 @@ class RegisterMovie : AppCompatActivity() {
 
         // Verifica si el idUsuario es válido
         if (idUsuario.isNullOrEmpty()) {
-            Toast.makeText(this@RegisterMovie,"Error 404, sesión expirada NO USER ID FOUND", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this@RegisterMovie, MainActivity::class.java)
+            Toast.makeText(this@Movie,"Error 404, sesión expirada NO USER ID FOUND", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this@Movie, MainActivity::class.java)
             startActivity(intent)
         }
 
-
-
-        Log.d("Login", idUsuario.toString())
-
+        if(isEditando){
+            obtenerPelicula()
+        }
         //SPINNER
         spClasifiacion = findViewById(R.id.spClasificacion)
         val listaClasifiaciones = arrayOf("Seleccione una Clasificacion", "AA", "A", "B", "B15", "C", "D")
@@ -81,7 +82,7 @@ class RegisterMovie : AppCompatActivity() {
         val btn_Cancel = findViewById<Button>(R.id.btn_CancelPeli)
         btn_Cancel.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                val intent = Intent(this@RegisterMovie, Profile::class.java)
+                val intent = Intent(this@Movie, Admin::class.java)
                 startActivity(intent)
             }
         })
@@ -93,13 +94,22 @@ class RegisterMovie : AppCompatActivity() {
             override fun onClick(v: View?) {
 
                 var isValido = validarCampos()
-                if (isValido) {
-                    agregarPelicula()
-                } else {
-                    Toast.makeText(this@RegisterMovie, "Faltan llenar campos", Toast.LENGTH_SHORT)
+                if (!isValido) {
+                    Toast.makeText(this@Movie, "Faltan llenar campos", Toast.LENGTH_SHORT)
                         .show()
                     return
                 }
+                if(!isEditando){
+                    agregarPelicula()
+                    return
+                }else{
+                    editarPelicula()
+                }
+
+                val intent = Intent(this@Movie, Admin::class.java)
+                startActivity(intent)
+
+
             }
         })
 
@@ -149,6 +159,56 @@ class RegisterMovie : AppCompatActivity() {
     fun validarCampos(): Boolean{
         return !(binding.edPeliTitulo.text.isNullOrEmpty() || binding.edFecha.text.isNullOrEmpty()|| binding.edDirector.text.isNullOrEmpty()|| binding.tvClasificacion.text.isNullOrEmpty())
     }
+    fun  editarPelicula(){
+        this.pelicula.titulo = binding.edPeliTitulo.text.toString()
+        this.pelicula.año =  binding.edFecha.text.toString()
+        this.pelicula.director = binding.edDirector.text.toString()
+        this.pelicula.generos =null
+        this.pelicula.clasificacion = binding.tvClasificacion.text.toString()
+        this.pelicula.sinopsis = binding.edSinopsis.toString()
+
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val idPelicula = intent.getStringExtra("idPelicula")
+            val call = RetrofitClient.MOVIE_WEB_SERVICE.actualizarPelicula(idPelicula.toString(),pelicula)
+            if (call.isSuccessful){
+                runOnUiThread {
+                    Toast.makeText(this@Movie, "Pelicula Actualizada Correctamente", Toast.LENGTH_SHORT)
+                        .show()
+                }
+                LimpiarCampos()
+                LimpiarObjeto()
+            }else{
+                runOnUiThread {
+                    Toast.makeText(this@Movie, "ERROR Actualizar", Toast.LENGTH_SHORT)
+                }
+            }
+        }
+
+
+    }
+    fun obtenerPelicula(){
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val idPelicula = intent.getStringExtra("idPelicula")
+            val call = RetrofitClient.MOVIE_WEB_SERVICE.obtenerPelicula(idPelicula.toString())
+            if (call.isSuccessful){
+                pelicula = call.body()!!
+                binding.tvPeliName.text = pelicula.titulo
+                binding.tvYear.text = pelicula.año
+                binding.tvDirector.text = pelicula.director
+                binding.tvSinopsis.text = pelicula.sinopsis
+                binding.tvClasificacion.text = pelicula.clasificacion
+                binding.tvDuracion.text = pelicula.duracion
+                binding.tvFecha.text = pelicula.fechaEstreno
+
+            }else{
+                runOnUiThread {
+                    Toast.makeText(this@Movie, "ERROR Obtener Pelicula", Toast.LENGTH_SHORT)
+                }
+            }
+        }
+    }
     fun  agregarPelicula(){
         this.pelicula.titulo = binding.edPeliTitulo.text.toString()
         this.pelicula.año =  binding.edFecha.text.toString()
@@ -162,14 +222,14 @@ class RegisterMovie : AppCompatActivity() {
             val call = RetrofitClient.MOVIE_WEB_SERVICE.agregarPelicula(pelicula)
             if (call.isSuccessful){
                 runOnUiThread {
-                    Toast.makeText(this@RegisterMovie, "Registro Exitoso", Toast.LENGTH_SHORT)
+                    Toast.makeText(this@Movie, "Registro Exitoso", Toast.LENGTH_SHORT)
                         .show()
                 }
                 LimpiarCampos()
                 LimpiarObjeto()
             }else{
                 runOnUiThread {
-                    Toast.makeText(this@RegisterMovie, "ERROR Registro", Toast.LENGTH_SHORT)
+                    Toast.makeText(this@Movie, "ERROR Registro", Toast.LENGTH_SHORT)
                 }
             }
         }

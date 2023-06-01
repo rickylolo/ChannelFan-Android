@@ -42,7 +42,6 @@ class Home : AppCompatActivity() {
             startActivity(intent)
         }
 
-        Log.d("Login", idUsuario.toString())
 
 
         //Action Bar

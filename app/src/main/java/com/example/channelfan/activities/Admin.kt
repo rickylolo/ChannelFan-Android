@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.channelfan.R
 import com.example.channelfan.adapters.FilmsAdapter
+import com.example.channelfan.adapters.FilmsEditDeleteAdapter
 import com.example.channelfan.adapters.GenreEditDeleteAdapter
 import com.example.channelfan.databinding.ActivityAdminBinding
 import com.example.channelfan.endpoints.RetrofitClient
@@ -89,13 +90,15 @@ class Admin : AppCompatActivity() {
         btn_Genero.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 val intent = Intent(this@Admin, Genre::class.java)
+                intent.putExtra("isEditando", false)
                 startActivity(intent)
             }
         })
         val btn_Pelicula = findViewById<ImageView>(R.id.fabMovies)
         btn_Pelicula.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                val intent = Intent(this@Admin, RegisterMovie::class.java)
+                val intent = Intent(this@Admin, Movie::class.java)
+                intent.putExtra("isEditando", false)
                 startActivity(intent)
             }
         })
@@ -105,7 +108,7 @@ class Admin : AppCompatActivity() {
     fun initRecyclerViewFilms(){
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerFilmsEditDelete)
         recyclerView.layoutManager = GridLayoutManager(this, 2)
-        recyclerView.adapter = FilmsAdapter(listaPeliculas)
+        recyclerView.adapter = FilmsEditDeleteAdapter(listaPeliculas)
     }
 
     fun initRecyclerViewGenres(){
