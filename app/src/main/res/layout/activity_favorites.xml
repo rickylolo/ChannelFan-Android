@@ -70,24 +70,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <TextView
-            android:id="@+id/textView_VistosRecientemente"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:gravity="start"
-            android:text="Vistos Recientemente"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerFilms"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="15dp">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
 
     </LinearLayout>
 

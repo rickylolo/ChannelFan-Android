@@ -15,7 +15,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class RegisterReview : AppCompatActivity() {
+class Review : AppCompatActivity() {
 
     lateinit var binding: ActivityRegisterReviewBinding
     var review = ClassReseña(null ,null,null,"","","","")
@@ -37,20 +37,21 @@ class RegisterReview : AppCompatActivity() {
 
         // Verifica si el idUsuario es válido
         if (idUsuario.isNullOrEmpty()) {
-            Toast.makeText(this@RegisterReview,"Error 404, sesión expirada NO USER ID FOUND", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this@RegisterReview, MainActivity::class.java)
+            Toast.makeText(this@Review,"Error 404, sesión expirada NO USER ID FOUND", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this@Review, MainActivity::class.java)
+            startActivity(intent)
+        }
+        val idPelicula = intent.getStringExtra("idPelicula")
+
+
+        // Cancel
+        val btn_Cancel = findViewById<Button>(R.id.btn_CancelReview)
+        btn_Cancel.setOnClickListener {
+            val intent = Intent(this@Review, MovieDetail::class.java)
+            intent.putExtra("idPelicula", idPelicula)
             startActivity(intent)
         }
 
-
-        //Cancel
-        val btn_Cancel = findViewById<Button>(R.id.btn_CancelReview)
-        btn_Cancel.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                val intent = Intent(this@RegisterReview, Profile::class.java)
-                startActivity(intent)
-            }
-        })
 
         //Register
         val btn_Register = findViewById<Button>(R.id.btnCrearReview)
@@ -61,7 +62,7 @@ class RegisterReview : AppCompatActivity() {
                 if (isValido) {
                     agregarReview()
                 } else {
-                    Toast.makeText(this@RegisterReview, "Faltan llenar campos", Toast.LENGTH_SHORT)
+                    Toast.makeText(this@Review, "Faltan llenar campos", Toast.LENGTH_SHORT)
                         .show()
                     return
                 }
@@ -77,24 +78,32 @@ class RegisterReview : AppCompatActivity() {
     fun  agregarReview(){
         this.review.peliculas = null
         this.review.usuario = null
+        val idPelicula = intent.getStringExtra("idPelicula")
+
+        // Obtén una referencia al objeto SharedPreferences
+        val sharedPreferences = getSharedPreferences("Sesion", Context.MODE_PRIVATE)
+
+        // Obtén el idUsuario almacenado en SharedPreferences
+        val idUsuario = sharedPreferences.getString("idUsuario", "")
 
         this.review.titulo = binding.edTitulo.text.toString()
         this.review.descripcion = binding.edDescripcion.text.toString()
-        this.review.calificacion = binding.tvCalificacion.text.toString()
+        this.review.calificacion = binding.ratingBar.rating.toString()
+
 
 
         CoroutineScope(Dispatchers.IO).launch {
             val call = RetrofitClient.REVIEW_WEB_SERVICE.agregarReseña(review)
             if (call.isSuccessful){
                 runOnUiThread {
-                    Toast.makeText(this@RegisterReview, "Registro Exitoso", Toast.LENGTH_SHORT)
+                    Toast.makeText(this@Review, "Registro reseña Exitoso", Toast.LENGTH_SHORT)
                         .show()
                 }
                 LimpiarCampos()
                 LimpiarObjeto()
             }else{
                 runOnUiThread {
-                    Toast.makeText(this@RegisterReview, "ERROR Registro", Toast.LENGTH_SHORT)
+                    Toast.makeText(this@Review, "ERROR Registro", Toast.LENGTH_SHORT)
                 }
             }
         }

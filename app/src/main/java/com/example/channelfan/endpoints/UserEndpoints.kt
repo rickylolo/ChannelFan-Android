@@ -30,10 +30,7 @@ interface WebService {
         @Path("idUsuario") idUsuario: String,  @Path("idReview") idReseña: String
     ):Response<String>
 
-    @GET("user{idUsuario}/review")
-    suspend fun obtenerReseñasUsuario(
-        @Path("idUsuario") idUsuario: String
-    ):Response<String>
+
 
 
     @GET("user{idUsuario}/review/fav")

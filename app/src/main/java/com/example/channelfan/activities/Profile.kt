@@ -11,16 +11,19 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.channelfan.R
 import com.example.channelfan.adapters.FilmsAdapter
+import com.example.channelfan.adapters.ReviewsAdapter
 import com.example.channelfan.databinding.ActivityProfileBinding
 import com.example.channelfan.endpoints.RetrofitClient
 import com.example.channelfan.models.ClassPelicula
+import com.example.channelfan.models.ClassReseña
 import com.example.channelfan.models.ClassUsuario
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class Profile : AppCompatActivity() {
-    private var listaPeliculas = arrayListOf<ClassPelicula>()
+    private var listaReviews = arrayListOf<ClassReseña>()
+
     private var userLoggeado = ClassUsuario()
 
     lateinit var binding: ActivityProfileBinding
@@ -38,20 +41,20 @@ class Profile : AppCompatActivity() {
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        //Hide Toolbar
-        supportActionBar?.hide()
-        obtenerUser(idUsuario.toString())
-        obtenerPeliculas()
-
-
-
         // Verifica si el idUsuario es válido
         if (idUsuario.isNullOrEmpty()) {
             Toast.makeText(this@Profile,"Error 404, sesión expirada NO USER ID FOUND",Toast.LENGTH_SHORT).show()
             val intent = Intent(this@Profile, MainActivity::class.java)
             startActivity(intent)
         }
+
+        //Hide Toolbar
+        supportActionBar?.hide()
+        obtenerUser(idUsuario.toString())
+        obtenerReseñas(idUsuario.toString())
+
+
+
 
 
         //Action Bar
@@ -102,19 +105,21 @@ class Profile : AppCompatActivity() {
 
     }
 
-    fun initRecyclerView(){
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerFilms)
-        recyclerView.layoutManager = GridLayoutManager(this, 2)
-        recyclerView.adapter = FilmsAdapter(listaPeliculas)
+    private fun initRecyclerViewReviews(){
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerReviews)
+        recyclerView.layoutManager = GridLayoutManager(this, 1)
+        recyclerView.adapter = ReviewsAdapter(listaReviews)
+
     }
 
-    private fun obtenerPeliculas() {
+
+    private fun obtenerReseñas(idUser : String) {
         CoroutineScope(Dispatchers.IO).launch {
-            val call = RetrofitClient.MOVIE_WEB_SERVICE.obtenerPeliculas()
+            val call = RetrofitClient.REVIEW_WEB_SERVICE.obtenerReseñasUsuario(idUser)
             runOnUiThread{
                 if (call.isSuccessful){
-                    listaPeliculas = call.body()!!.listaPeliculas
-                    initRecyclerView()
+                    listaReviews = call.body()!!.listaReseñas
+                    initRecyclerViewReviews()
                 }else {
                     Toast.makeText(this@Profile,"ERROR CONSULTAR,TODOS", Toast.LENGTH_SHORT).show()
                 }

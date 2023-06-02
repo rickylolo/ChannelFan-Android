@@ -1,6 +1,8 @@
 package com.example.channelfan.endpoints
 
+import com.example.channelfan.models.ClassGenero
 import com.example.channelfan.models.ClassPelicula
+import com.example.channelfan.models.ClassReseña
 import com.example.channelfan.responses.PeliculasResponse
 import retrofit2.Response
 import retrofit2.http.*
@@ -17,7 +19,9 @@ interface PeliculaWebService {
     @GET("pelicula{idPelicula}/genero")
     suspend fun obtenerGenerosPelicula(
         @Path("idPelicula") idPelicula: String
-    ): Response<ClassPelicula>
+    ): Response<ClassGenero>
+
+
 
     @POST("pelicula")
     suspend fun agregarPelicula(

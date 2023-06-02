@@ -42,7 +42,6 @@ class Favorites : AppCompatActivity() {
             startActivity(intent)
         }
 
-        Log.d("Login", idUsuario.toString())
 
 
         //Action Bar
