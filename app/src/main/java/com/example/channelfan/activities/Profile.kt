@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.channelfan.R
 import com.example.channelfan.adapters.FilmsAdapter
+import com.example.channelfan.adapters.MyReviewsAdapter
 import com.example.channelfan.adapters.ReviewsAdapter
 import com.example.channelfan.databinding.ActivityProfileBinding
 import com.example.channelfan.endpoints.RetrofitClient
@@ -84,7 +85,6 @@ class Profile : AppCompatActivity() {
 
 
         // Floating Action Button
-
         val btn_Admin = findViewById<ImageView>(R.id.fabAdmin)
         btn_Admin.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
@@ -105,15 +105,15 @@ class Profile : AppCompatActivity() {
 
     }
 
-    private fun initRecyclerViewReviews(){
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerReviews)
+    fun initRecyclerViewReviews(){
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerMyReviews)
         recyclerView.layoutManager = GridLayoutManager(this, 1)
-        recyclerView.adapter = ReviewsAdapter(listaReviews)
+        recyclerView.adapter = MyReviewsAdapter(listaReviews)
 
     }
 
 
-    private fun obtenerReseñas(idUser : String) {
+    fun obtenerReseñas(idUser : String) {
         CoroutineScope(Dispatchers.IO).launch {
             val call = RetrofitClient.REVIEW_WEB_SERVICE.obtenerReseñasUsuario(idUser)
             runOnUiThread{
@@ -127,7 +127,7 @@ class Profile : AppCompatActivity() {
         }
     }
 
-    private fun obtenerUser(idUser : String) {
+    fun obtenerUser(idUser : String) {
         CoroutineScope(Dispatchers.IO).launch {
             val call = RetrofitClient.USER_WEB_SERVICE.obtenerUsuario(idUser)
             runOnUiThread{

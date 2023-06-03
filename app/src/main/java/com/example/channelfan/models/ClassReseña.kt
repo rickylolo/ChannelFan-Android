@@ -6,27 +6,37 @@ data class ClassReseña(
     @SerializedName("_id")
     val id: String? = null,
 
-    @Expose(serialize = true)
+
     @SerializedName("pelicula")
     var peliculas: List<ClassPelicula>? = null,
 
-    @Expose(serialize = true)
+
     @SerializedName("usuario")
     var usuario: ClassUsuario? = null,
 
-    @Expose(serialize = true)
+
     @SerializedName("titulo")
     var titulo: String? = null,
 
-    @Expose(serialize = true)
+
     @SerializedName("descripcion")
     var descripcion: String? = null,
 
-    @Expose(serialize = true)
+
     @SerializedName("calificacion")
     var calificacion: String? = null,
 
-    @Expose(serialize = true)
+
     @SerializedName("fecha")
-    var fecha: String? = null
+    var fecha: String? = null,
+
+    @SerializedName("idPelicula")
+    var idPelicula: String? = null,
+
+    @SerializedName("idUsuario")
+    var idUsuario: String? = null
+
 )
+
+
+

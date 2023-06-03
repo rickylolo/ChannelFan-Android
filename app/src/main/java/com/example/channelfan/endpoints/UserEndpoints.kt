@@ -25,9 +25,10 @@ interface WebService {
         @Body usuario: ClassUsuario
     ):Response<String>
 
-    @GET("user/review/fav")
+
+    @POST("user/review/fav")
     suspend fun agregarReseñaFavoritos(
-        @Path("idUsuario") idUsuario: String,  @Path("idReview") idReseña: String
+        @Body body: HashMap<String, String>
     ):Response<String>
 
 

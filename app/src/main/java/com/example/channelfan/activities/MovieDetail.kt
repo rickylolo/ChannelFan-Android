@@ -44,6 +44,40 @@ class MovieDetail : AppCompatActivity() {
             }
         })
 
+
+
+        //Action Bar
+        val btn_home = findViewById<ImageView>(R.id.btn_inicio)
+        btn_home.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                val intent = Intent(this@MovieDetail, Home::class.java)
+                startActivity(intent)
+            }
+        })
+
+        val btn_favorites = findViewById<ImageView>(R.id.btn_corazon)
+        btn_favorites.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                val intent = Intent(this@MovieDetail, Favorites::class.java)
+                startActivity(intent)
+            }
+        })
+
+        val btn_Search = findViewById<ImageView>(R.id.btn_search)
+        btn_Search.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                val intent = Intent(this@MovieDetail, Search::class.java)
+                startActivity(intent)
+            }
+        })
+
+        val btn_profile = findViewById<ImageView>(R.id.btn_perfil)
+        btn_profile.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                val intent = Intent(this@MovieDetail, Profile::class.java)
+                startActivity(intent)
+            }
+        })
     }
 
 

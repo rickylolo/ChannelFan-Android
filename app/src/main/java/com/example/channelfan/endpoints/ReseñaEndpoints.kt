@@ -10,7 +10,7 @@ interface ReseñaWebService {
 
     @POST("review")
     suspend fun agregarReseña(
-        @Body reseña: ClassReseña
+        @Body review: ClassReseña
     ): Response<String>
 
     @GET("pelicula{idPelicula}/review")
@@ -18,19 +18,24 @@ interface ReseñaWebService {
         @Path("idPelicula") idPelicula: String
     ): Response<ReviewsResponse>
 
+    @GET("user{idUsuario}/review/fav")
+    suspend fun obtenerReseñasFavoritas(
+        @Path("idUsuario") idUsuario: String
+    ): Response<ReviewsResponse>
+
     @GET("user{idUsuario}/review")
     suspend fun obtenerReseñasUsuario(
         @Path("idUsuario") idUsuario: String
     ): Response<ReviewsResponse>
 
-    @PUT("review/{idReseña}")
+    @PUT("review{idReview}")
     suspend fun actualizarReseña(
-        @Path("idReseña") idReseña: String,
+        @Path("idReview") idReseña: String,
         @Body reseña: ClassReseña
     ): Response<String>
 
-    @DELETE("review/{idReseña}")
+    @DELETE("review{idReview}")
     suspend fun borrarReseña(
-        @Path("idReseña") idReseña: String
+        @Path("idReview") idReseña: String
     ): Response<String>
 }

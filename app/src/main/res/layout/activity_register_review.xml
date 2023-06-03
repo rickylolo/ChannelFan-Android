@@ -104,7 +104,7 @@
                 android:id="@+id/ratingBar"
                 android:layout_width="334dp"
                 android:layout_height="46dp"
-                android:numStars="10"
+                android:numStars="5"
                 android:rating="0"/>
 
 

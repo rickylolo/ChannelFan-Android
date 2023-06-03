@@ -29,6 +29,7 @@ class FilmsEditDeleteAdapter(private val FilmList:List<ClassPelicula>): Recycler
 
     override fun onBindViewHolder(holder: FilmsEditDeleteViewHolder, position: Int) {
         val item = FilmList[position]
+
         holder.render(item, object : FilmsEditDeleteViewHolder.OnItemClickListener {
             override fun onEditClick(id: String) {
                 val intent = Intent(holder.itemView.context, Movie::class.java)

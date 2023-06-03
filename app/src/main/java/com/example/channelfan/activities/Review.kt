@@ -10,15 +10,18 @@ import android.widget.Toast
 import com.example.channelfan.R
 import com.example.channelfan.databinding.ActivityRegisterReviewBinding
 import com.example.channelfan.endpoints.RetrofitClient
+import com.example.channelfan.models.ClassPelicula
 import com.example.channelfan.models.ClassReseña
+import com.example.channelfan.models.ClassUsuario
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.time.LocalDate
 
 class Review : AppCompatActivity() {
 
     lateinit var binding: ActivityRegisterReviewBinding
-    var review = ClassReseña(null ,null,null,"","","","")
+    var review = ClassReseña(null ,null,null,"","","","","","")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +64,12 @@ class Review : AppCompatActivity() {
                 var isValido = validarCampos()
                 if (isValido) {
                     agregarReview()
+
+
+                    val intent = Intent(this@Review, MovieDetail::class.java)
+                    intent.putExtra("idPelicula", idPelicula)
+                    startActivity(intent)
+
                 } else {
                     Toast.makeText(this@Review, "Faltan llenar campos", Toast.LENGTH_SHORT)
                         .show()
@@ -77,7 +86,7 @@ class Review : AppCompatActivity() {
     }
     fun  agregarReview(){
         this.review.peliculas = null
-        this.review.usuario = null
+
         val idPelicula = intent.getStringExtra("idPelicula")
 
         // Obtén una referencia al objeto SharedPreferences
@@ -89,7 +98,9 @@ class Review : AppCompatActivity() {
         this.review.titulo = binding.edTitulo.text.toString()
         this.review.descripcion = binding.edDescripcion.text.toString()
         this.review.calificacion = binding.ratingBar.rating.toString()
-
+        this.review.fecha = LocalDate.now().toString()
+        this.review.idUsuario = idUsuario.toString()
+        this.review.idPelicula = idPelicula.toString()
 
 
         CoroutineScope(Dispatchers.IO).launch {
@@ -113,7 +124,7 @@ class Review : AppCompatActivity() {
     fun LimpiarCampos(){
         binding.edTitulo.setText("")
         binding.edDescripcion.setText("")
-        binding.tvCalificacion.setText("")
+
 
     }
     fun LimpiarObjeto(){

@@ -4,30 +4,39 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.channelfan.R
-import com.example.channelfan.adapters.FilmsAdapter
+import com.example.channelfan.adapters.MyReviewsAdapter
+import com.example.channelfan.adapters.ReviewsAdapter
+import com.example.channelfan.databinding.ActivityFavoritesBinding
 import com.example.channelfan.endpoints.RetrofitClient
-import com.example.channelfan.models.ClassPelicula
+import com.example.channelfan.models.ClassReseña
+import com.example.channelfan.models.ClassUsuario
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class Favorites : AppCompatActivity() {
-    private var listaPeliculas = arrayListOf<ClassPelicula>()
+
+    private var listaReviews = arrayListOf<ClassReseña>()
+
+    private var userLoggeado = ClassUsuario()
+
+    lateinit var binding: ActivityFavoritesBinding
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_favorites)
+        binding = ActivityFavoritesBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         //Hide Toolbar
         supportActionBar?.hide()
 
-        obtenerPeliculas()
 
         // Obtén una referencia al objeto SharedPreferences
         val sharedPreferences = getSharedPreferences("Sesion", Context.MODE_PRIVATE)
@@ -41,6 +50,9 @@ class Favorites : AppCompatActivity() {
             val intent = Intent(this@Favorites, MainActivity::class.java)
             startActivity(intent)
         }
+
+        obtenerUser(idUsuario.toString())
+        obtenerReseñasFavoritas(idUsuario.toString())
 
 
 
@@ -70,23 +82,43 @@ class Favorites : AppCompatActivity() {
         })
     }
 
-    fun initRecyclerView(){
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerFilms)
-        recyclerView.layoutManager = GridLayoutManager(this, 2)
-        recyclerView.adapter = FilmsAdapter(listaPeliculas)
+    fun initRecyclerViewReviews(){
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerFilmsFavs)
+        recyclerView.layoutManager = GridLayoutManager(this, 1)
+        recyclerView.adapter = ReviewsAdapter(listaReviews)
+
     }
 
-    private fun obtenerPeliculas() {
+
+    fun obtenerUser(idUser : String) {
         CoroutineScope(Dispatchers.IO).launch {
-            val call = RetrofitClient.MOVIE_WEB_SERVICE.obtenerPeliculas()
+            val call = RetrofitClient.USER_WEB_SERVICE.obtenerUsuario(idUser)
             runOnUiThread{
                 if (call.isSuccessful){
-                    listaPeliculas = call.body()!!.listaPeliculas
-                    initRecyclerView()
+                    userLoggeado = call.body()!!
+                    binding.tvNameFav.text = "Hola," +userLoggeado.firstName + " "+ userLoggeado.lastName
                 }else {
-                    Toast.makeText(this@Favorites,"ERROR CONSULTAR,TODOS", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Favorites,"ERROR CONSULTAR USUARIO", Toast.LENGTH_SHORT).show()
                 }
             }
         }
     }
+
+
+    fun obtenerReseñasFavoritas(idUser : String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetrofitClient.REVIEW_WEB_SERVICE.obtenerReseñasFavoritas(idUser)
+            runOnUiThread{
+                if (call.isSuccessful){
+                    listaReviews = call.body()!!.listaReseñas
+                    initRecyclerViewReviews()
+                }else {
+                    Toast.makeText(this@Favorites,"No hay reseñas favoritas", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+
+
 }

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -16,7 +17,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/textViewNombreUsuarioReview"
+            android:id="@+id/Edit_textViewNombreUsuarioReview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -24,7 +25,7 @@
             android:textStyle="bold" />
 
         <RatingBar
-            android:id="@+id/rBCalificacionReview"
+            android:id="@+id/Edit_rBCalificacionReview"
             android:layout_width="wrap_content"
             android:layout_height="43dp"
             android:layout_alignParentEnd="true"
@@ -36,50 +37,45 @@
             android:stepSize="0.5" />
 
         <TextView
-            android:id="@+id/textViewTitulo"
+            android:id="@+id/Edit_textViewTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textViewNombreUsuarioReview"
+            android:layout_below="@id/Edit_textViewNombreUsuarioReview"
             android:text="Título de la reseña" />
 
         <TextView
-            android:id="@+id/textViewDescripcion"
+            android:id="@+id/Edit_textViewDescripcion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textViewTitulo"
+            android:layout_below="@id/Edit_textViewTitulo"
             android:text="Descripción de la reseña" />
 
         <TextView
-            android:id="@+id/textViewCalificacion"
+            android:id="@+id/Edit_textViewCalificacion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textViewDescripcion"
+            android:layout_below="@id/Edit_textViewDescripcion"
             android:text="Calificación de la reseña" />
 
         <TextView
-            android:id="@+id/textViewFecha"
+            android:id="@+id/Edit_textViewFecha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textViewCalificacion"
+            android:layout_below="@id/Edit_textViewCalificacion"
             android:text="Fecha de la reseña" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textViewFecha"
+            android:layout_below="@id/Edit_textViewFecha"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btnEditar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Editar"
-                android:layout_margin="4dp"/>
+
 
             <Button
-                android:id="@+id/btnBorrar"
+                android:id="@+id/btnDeleteReview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Borrar"
